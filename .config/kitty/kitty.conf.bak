@@ -1,0 +1,38 @@
+font_family       BlexMono Nerd Font
+symbol_map U+f000-U+f2e0 FontAwesome6Pro
+font_size 	 13.0
+bold_font        auto
+italic_font      auto
+bold_italic_font auto
+
+background_opacity .95
+
+confirm_os_window_close 0
+wheel_scroll_multiplier 1
+enable_audio_bell no
+window_padding_width 12
+
+
+cursor_shape block
+cursor_beam_thickness 1.5
+cursor_underline_thickness 2.0
+
+
+include current-theme.conf
+
+cursor #cccccc
+cursor_text_color #111111
+
+# using: https://stackoverflow.com/questions/16359878/how-to-map-shift-enter
+map shift+enter              send_text all \x1b[13;2u      # <s-cr>
+map ctrl+enter               send_text all \x1b[13;5u      # <c-cr>
+map ctrl+shift+enter         send_text all \x1b[13;6u      # <c-s-cr>
+map shift+tab                send_text all \x1b[9;2u       # <s-tab>
+map ctrl+tab                 send_text all \x1b[9;5u       # <c-tab>
+map ctrl+shift+tab           send_text all \x1b[9;6u       # <c-s-tab>
+
+# using: https://www.reddit.com/r/neovim/comments/mbj8m5/how_to_setup_ctrlshiftkey_mappings_in_neovim_and/
+map ctrl+shift+j             send_text all \x1b[74;5u      # <c-s-j> (not <c-J>, like <m-J> which works differently from <m-j>)
+map ctrl+shift+k             send_text all \x1b[75;5u      # <c-s-k> 
+map ctrl+shift+h             send_text all \x1b[72;5u      # <c-s-h>
+map ctrl+shift+l             send_text all \x1b[76;5u      # <c-s-l>
