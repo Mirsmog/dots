@@ -2,16 +2,23 @@
   "position": "top",
   "layer": "bottom",
   "reload_style_on_change": true,
-  "height": 0,
+  "height": 20,
   "spacing": 0,
   "margin-bottom": 0,
-  "modules-left": ["cpu", "memory", "tray"],
-  "modules-center": ["hyprland/workspaces"],
-  "modules-right": ["pulseaudio", "hyprland/language", "network", "clock"],
+  "modules-left": ["hyprland/workspaces", "hyprland/window"],
+  "modules-right": [
+    "pulseaudio",
+    "cpu",
+    "memory",
+    "tray",
+    "network",
+    "hyprland/language",
+    "clock"
+  ],
 
   "cpu": {
     "interval": 1,
-    "format": "{icon} {usage}%",
+    "format": "[ {icon} {usage}% ]",
     "format-icons": [
       "<span color='#e0def4'></span>",
       "<span color='#e0def4'></span>",
@@ -20,14 +27,14 @@
       "<span color='#c4a7e7'></span>",
       "<span color='#c4a7e7'></span>",
       "<span color='#f6c177'></span>",
-      "<span color='#eb6f92'></span>",
+      "<span color='#eb6f92'></span>"
     ],
-    "on-click": "killall htop || kitty --class global-float-big -e htop",
+    "on-click": "killall htop || kitty --class global-float-big -e htop"
   },
 
   "memory": {
     "interval": 1,
-    "format": "{icon} {percentage}%",
+    "format": "[ {icon} {percentage}% ]",
     "format-icons": [
       "<span color='#e0def4'></span>",
       "<span color='#e0def4'></span>",
@@ -36,15 +43,15 @@
       "<span color='#c4a7e7'></span>",
       "<span color='#c4a7e7'></span>",
       "<span color='#f6c177'></span>",
-      "<span color='#eb6f92'></span>",
+      "<span color='#eb6f92'></span>"
     ],
     "tooltip": true,
     "tooltip-format": "Memory - {used:0.1f}GB used",
-    "on-click": "killall htop || kitty --class global-float-big -e htop",
+    "on-click": "killall htop || kitty --class global-float-big -e htop"
   },
 
   "tray": {
-    "spacing": 10,
+    "spacing": 10
   },
 
   "hyprland/workspaces": {
@@ -52,56 +59,49 @@
     "format": "{icon}",
     "on-click": "activate",
     "format-icons": {
-      "1": "󰫍",
-      "2": "󰫍",
-      "3": "󰫍",
-      "4": "󰫍",
-      "5": "󰫍",
-      "6": "󰫍",
-      "7": "󰫍",
-      "stash": "",
+      "stash": ""
     },
     "tooltip": false,
     "persistent_workspaces": {
-      "*": 7,
-    },
+      "*": 9
+    }
   },
 
   "hyprland/language": {
-    "format": "{}",
-    "format-en": "US",
-    "format-ru": "RU",
+    "format": "[ {} ]",
+    "format-en": "🇺🇸",
+    "format-ru": "🇷🇺"
   },
 
   "network": {
     "format-linked": "󰈀 {ifname} (No IP)",
     "format-disconnected": "<span color='#eb6f92'></span>",
     "tooltip-format-disconnected": "Disconnected",
-    "format-wifi": "  {essid}",
-    "format-ethernet": "sas {essid}",
+    "format-wifi": "[  {essid} ]",
+    "format-ethernet": "[ Ethernet {essid} ]",
     "interval": 2,
     "tooltip": true,
     "on-click-right": "python ~/.config/rofi/network/network.py",
-    "format-alt": "<span foreground='#9ccfd8'> {bandwidthDownBytes}</span> <span foreground='#c4a7e7'> {bandwidthUpBytes}</span>",
+    "format-alt": "[ <span foreground='#9ccfd8'> {bandwidthDownBytes}</span> <span foreground='#c4a7e7'> {bandwidthUpBytes}</span> ]",
 
-    "tooltip-format": "Network: <big><b>{essid}</b></big>\nSignal strength: <b>{signaldBm}dBm ({signalStrength}%)</b>\nFrequency: <b>{frequency}MHz</b>\nInterface: <b>{ifname}</b>\nIP: <b>{ipaddr}/{cidr}</b>\nGateway: <b>{gwaddr}</b>\nNetmask: <b>{netmask}</b>",
+    "tooltip-format": "Network: <big><b>{essid}</b></big>\nSignal strength: <b>{signaldBm}dBm ({signalStrength}%)</b>\nFrequency: <b>{frequency}MHz</b>\nInterface: <b>{ifname}</b>\nIP: <b>{ipaddr}/{cidr}</b>\nGateway: <b>{gwaddr}</b>\nNetmask: <b>{netmask}</b>"
   },
   "pulseaudio": {
-    "format": "{icon}  {volume}%",
-    "format-muted": "<span color='#eb6f92'></span> Muted",
+    "format": "[ {icon} {volume}% ]",
+    "format-muted": "[ <span color='#eb6f92'></span> Muted ]",
     "on-click": "pactl set-sink-mute 0 toggle",
     "format-icons": {
-      "default": ["", "", "", ""],
+      "default": ["", "", "", ""]
     },
     "scroll-step": 5,
     "tooltip": true,
     "tooltip-format": "{icon} at {volume}%",
-    "smooth-scrolling-threshold": 1.5,
+    "smooth-scrolling-threshold": 1.5
   },
 
   "clock": {
-    "format": " {:%H:%M}",
-    "format-alt": " {:%d·%m·%y}",
+    "format": "[  {:%H:%M} ]",
+    "format-alt": "[  {:%d·%m·%y} ]",
     "tooltip-format": "<tt>{calendar}</tt>",
     "calendar": {
       "mode": "month",
@@ -111,17 +111,17 @@
       "format": {
         "months": "<span color='#c4a7e7'><b>{}</b></span>",
         "weekdays": "<span color='#f6c177'><b>{}</b></span>",
-        "today": "<span color='#eb6f92'><b>{}</b></span>",
-      },
+        "today": "<span color='#eb6f92'><b>{}</b></span>"
+      }
     },
     "actions": {
       "on-click-right": "mode",
       "on-click-forward": "tz_up",
       "on-click-backward": "tz_down",
       "on-scroll-up": "shift_up",
-      "on-scroll-down": "shift_down",
-    },
+      "on-scroll-down": "shift_down"
+    }
   },
 
-  "escape": true,
+  "escape": true
 }

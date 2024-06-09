@@ -6,22 +6,22 @@ gaps_out=$(hyprctl getoption general:gaps_out | grep 'custom type' | awk '{print
 echo gaps_out
 
 function inc_gaps_in() {
-	hyprctl keyword general:gaps_in $((gaps_in + 5))
+	hyprctl keyword general:gaps_in $((gaps_in + 4))
 }
 
 function dec_gaps_in() {
 	if [ "$gaps_in" -gt 0 ]; then
-		hyprctl keyword general:gaps_in $((gaps_in - 5))
+		hyprctl keyword general:gaps_in $((gaps_in - 4))
 	fi
 }
 
 function inc_gaps_out() {
-	hyprctl keyword general:gaps_out $((gaps_out + 5))
+	hyprctl keyword general:gaps_out $((gaps_out + 4))
 }
 
 function dec_gaps_out() {
 	if [ "$gaps_out" -gt 0 ]; then
-		hyprctl keyword general:gaps_out $((gaps_out - 5))
+		hyprctl keyword general:gaps_out $((gaps_out - 4))
 	fi
 }
 

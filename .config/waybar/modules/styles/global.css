@@ -1,8 +1,8 @@
 * {
   all: initial;
-  font-family: "CaskaydiaCove Nerd Font", "FontAwesome6Pro";
+  font-family: 'Cascadia Code', 'Font Awesome 6 Pro';
   font-weight: bold;
-  font-size: 12px;
+  font-size: 10px;
   min-height: 0;
   color: @text;
 }
@@ -10,7 +10,7 @@
 window#waybar {
   transition-property: background-color;
   transition-duration: 0.5s;
-  background-color: @base;
+  background-color: #3e8fb0;
 }
 
 tooltip {
@@ -21,4 +21,28 @@ tooltip {
 
 tooltip label {
   padding: 4px 8px;
+}
+
+.modules-right {
+  padding-left: 10px;
+  background-color: #222436;
+}
+
+.modules-right * {
+  margin-right: 10px;
+}
+
+#custom-date,
+#window,
+#clock,
+#network,
+#pulseaudio {
+  color: inherit;
+  font-size: inherit;
+}
+
+#window * {
+  padding-top: 1px;
+  font-size: 14px;
+  font-weight: normal;
 }
