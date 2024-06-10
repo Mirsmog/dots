@@ -10,6 +10,9 @@ keymap.set("n", "-", "<C-x>")
 -- Delete word backward
 keymap.set("n", "dw", "vb_d")
 
+keymap.set("n", "<C-=>", "<cmd>vertical resize+10<cr>", opts)
+keymap.set("n", "<C-->", "<cmd>vertical resize-10<cr>", opts)
+
 -- Select all
 keymap.set("n", "<C-a>", "gg<S-v>G")
 
