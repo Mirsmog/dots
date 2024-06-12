@@ -1,6 +1,0 @@
-[pyprland]
-
-plugins = [
-  "toggle_special",
-  "magnify",
-]

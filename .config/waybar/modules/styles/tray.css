@@ -1,11 +1,9 @@
 #tray {
-  margin: 6px 0px 6px 12px;
   border-radius: 16px;
 }
 
 #tray * {
   margin: 0;
-  font-size: 12px;
 }
 
 #tray menu {

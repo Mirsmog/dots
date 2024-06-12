@@ -1,5 +1,5 @@
 #workspaces {
-  font-size: 12px;
+  font-size: 14px;
   background-color: #222436;
   margin-right: 8px;
   padding-right: 4px;
@@ -8,6 +8,7 @@
 #workspaces button * {
   color: inherit;
   font-size: inherit;
+  font-weight: 400;
 }
 
 #workspaces button {
@@ -18,6 +19,7 @@
 #workspaces button.persistent {
   color: @text;
   padding: 0px 8px;
+  padding-bottom: 1.5px;
   font-size: inherit;
   border-color: @text;
 }
@@ -33,7 +35,7 @@
 }
 
 #workspaces button.active {
-  background-color: @pine;
   color: @text;
-  border-color: @love;
+  background-color: #179299;
+  ;
 }

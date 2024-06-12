@@ -2,7 +2,7 @@
   all: initial;
   font-family: 'Cascadia Code', 'Font Awesome 6 Pro';
   font-weight: bold;
-  font-size: 10px;
+  font-size: 12px;
   min-height: 0;
   color: @text;
 }
@@ -10,7 +10,8 @@
 window#waybar {
   transition-property: background-color;
   transition-duration: 0.5s;
-  background-color: #3e8fb0;
+  /* background-color: #7287fd; */
+  background-color: #179299;
 }
 
 tooltip {
@@ -22,6 +23,7 @@ tooltip {
 tooltip label {
   padding: 4px 8px;
 }
+
 
 .modules-right {
   padding-left: 10px;
@@ -42,7 +44,7 @@ tooltip label {
 }
 
 #window * {
-  padding-top: 1px;
+  padding-top: 5px;
   font-size: 14px;
-  font-weight: normal;
+  font-weight: 400;
 }
