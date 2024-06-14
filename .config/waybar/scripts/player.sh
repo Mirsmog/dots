@@ -32,9 +32,9 @@ metadata=$(truncate_text "$metadata" $max_length)
 # Output based on player status
 if [ -n "$metadata" ]; then
   if [ "$status" = "Playing" ]; then
-    metadata="<span color='#9ccfd8'>[ $pause_icon $metadata ]</span>"
+    metadata="[ <span color='#9ccfd8'><span font='bold'>$pause_icon</span> $metadata</span> ]"
   elif [ "$status" = "Paused" ]; then
-    metadata="<span color='#f6c177'>[ $play_icon $metadata ]</span>"
+    metadata="[ <span color='#f6c177'>$play_icon $metadata</span> ]"
   fi
   echo "{\"text\": \"$metadata\", \"tooltip\": \"$tooltip\"}"
 else

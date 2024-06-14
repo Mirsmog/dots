@@ -9,8 +9,9 @@
     "hyprland/window",
   ],
   "modules-right": [
-    "custom/playerctl",
     "tray",
+    "custom/playerctl",
+    "custom/leetcode",
     "pulseaudio",
     "cpu",
     "memory",
@@ -35,11 +36,18 @@
   },
   "custom/playerctl": {
     "exec": "~/.config/waybar/scripts/player.sh",
-    "interval": 5,
+    "interval": 1,
     "return-type": "json",
     "on-click": "playerctl play-pause",
+    "on-click-right": "kitty --title 'Music Visualizer' -e cava",
     "on-scroll-up": "playerctl next",
     "on-scroll-down": "playerctl previous"
+  },
+  "custom/leetcode": {
+    "interval": 1800,
+    "return-type": "json",
+    "exec": "~/.config/waybar/scripts/leetcode.py",
+    "on-click": "firefox -new-tab 'https://leetcode.com/problemset/'"
   },
   "memory": {
     "interval": 1,
@@ -76,7 +84,7 @@
       "7": "七",
       "8": "八",
       "9": "九",
-      "stash": ""
+      "stash": "<span font='bold'></span>"
     },
     "tooltip": false,
     "persistent_workspaces": {

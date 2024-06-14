@@ -1,14 +1,14 @@
 local telescopeActions = require("lvim.utils.modules").require_on_exported_call "telescope.actions"
 
 
-lvim.builtin.which_key.mappings["r"] = {
-  name = "Run code",
-  f = { "<cmd>:RunFile<cr>", "Run File" },
+lvim.builtin.which_key.mappings["rf"] = {
+  "<cmd>:RunFile<cr>", "Run File"
 }
 
-lvim.builtin.which_key.vmappings["r"] = {
-  name = "Run code",
-  r = { "<cmd>:RunCode<cr>", "Run Code line" },
+lvim.keys.normal_mode["<C-n>"] = ":RunCode<CR>"
+
+lvim.builtin.which_key.mappings["rr"] = {
+  "<cmd>:RunCode<cr>", "Run Code line"
 }
 
 lvim.builtin.which_key.mappings["<leader>"] = {
