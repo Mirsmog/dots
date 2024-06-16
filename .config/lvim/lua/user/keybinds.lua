@@ -6,6 +6,7 @@ lvim.builtin.which_key.mappings["rf"] = {
 }
 
 lvim.keys.normal_mode["<C-n>"] = ":RunCode<CR>"
+lvim.keys.normal_mode["<C-a>"] = "gg<S-v>G"
 
 lvim.builtin.which_key.mappings["rr"] = {
   "<cmd>:RunCode<cr>", "Run Code line"

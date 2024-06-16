@@ -11,13 +11,14 @@
   "modules-right": [
     "tray",
     "custom/playerctl",
+    "custom/wakatime",
     "custom/leetcode",
     "pulseaudio",
     "cpu",
     "memory",
     "network",
     "hyprland/language",
-    "clock"
+    "clock",
   ],
   "cpu": {
     "interval": 1,
@@ -48,6 +49,11 @@
     "return-type": "json",
     "exec": "~/.config/waybar/scripts/leetcode.py",
     "on-click": "firefox -new-tab 'https://leetcode.com/problemset/'"
+  },
+  "custom/wakatime": {
+    "interval": 1800,
+    "return-type": "json",
+    "exec": "~/.config/waybar/scripts/wakatime.py",
   },
   "memory": {
     "interval": 1,
@@ -93,6 +99,7 @@
   },
   "hyprland/language": {
     "format": "[ {} ]",
+    "min-length": 6,
     "format-en": "🇺🇸",
     "format-ru": "🇷🇺"
   },

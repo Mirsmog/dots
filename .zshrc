@@ -118,4 +118,5 @@ alias cls="clear"
 
 bindkey -v
 
+source <(fzf --zsh)
 eval "$(zoxide init zsh --cmd cd)"
