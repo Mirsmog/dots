@@ -5,11 +5,14 @@
 export ZSH="$HOME/.oh-my-zsh"
 export TERM=kitty
 
+
+
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="robbyrussell"
+
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -107,6 +110,9 @@ source $ZSH/oh-my-zsh.sh
 #
 # Example aliases
 alias vi="lvim"
+alias pai="sudo pacman -Sy"
+alias pau="sudo pacman -Syu"
+alias par="sudo pacman -Rc"
 alias nvim="lvim"
 alias nvpn="~/.local/bin/nekoray/launcher"
 alias ff="fastfetch"
@@ -115,6 +121,14 @@ alias icat="kitten icat"
 alias hyprshot="$HOME/.local/bin/hyprshot"
 alias nvpn="/usr/local/bin/nekoray/launcher"
 alias cls="clear"
+
+alias ls='exa --icons --color=always --group-directories-first'
+alias l='exa -alF --icons --color=always --group-directories-first'
+alias la='exa -a --icons --color=always --group-directories-first'
+alias ll='exa -lF --icons --color=always --group-directories-first'
+alias l.='exa -a | egrep "^\."'
+
+
 
 bindkey -v
 
