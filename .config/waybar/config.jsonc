@@ -3,7 +3,7 @@
   "layer": "bottom",
   "reload_style_on_change": true,
   "spacing": 0,
-  "margin-bottom": 0,
+  "margin": 0,
   "modules-left": [
     "hyprland/workspaces",
     "hyprland/window",
@@ -24,8 +24,8 @@
     "interval": 1,
     "format": "[ {icon} {usage}% ]",
     "format-icons": [
-      "<span color='#e0def4'></span>",
-      "<span color='#e0def4'></span>",
+      "<span color='#9ccfd8'></span>",
+      "<span color='#9ccfd8'></span>",
       "<span color='#9ccfd8'></span>",
       "<span color='#9ccfd8'></span>",
       "<span color='#c4a7e7'></span>",
@@ -45,22 +45,24 @@
     "on-scroll-down": "playerctl previous"
   },
   "custom/leetcode": {
-    "interval": 1800,
+    "interval": 3600,
     "return-type": "json",
     "exec": "~/.config/waybar/scripts/leetcode.py",
-    "on-click": "firefox -new-tab 'https://leetcode.com/problemset/'"
+    "on-click": "firefox -new-tab 'https://leetcode.com/problemset/'",
+    "exec-if": "ping -c 1 -W 1 8.8.8.8"
   },
   "custom/wakatime": {
     "interval": 1800,
     "return-type": "json",
     "exec": "~/.config/waybar/scripts/wakatime.py",
+    "exec-if": "ping -c 1 -W 1 8.8.8.8"
   },
   "memory": {
     "interval": 1,
     "format": "[ {icon} {percentage}% ]",
     "format-icons": [
-      "<span color='#e0def4'></span>",
-      "<span color='#e0def4'></span>",
+      "<span color='#9ccfd8'></span>",
+      "<span color='#9ccfd8'></span>",
       "<span color='#9ccfd8'></span>",
       "<span color='#9ccfd8'></span>",
       "<span color='#c4a7e7'></span>",
@@ -107,7 +109,7 @@
     "format-linked": "󰈀 {ifname} (No IP)",
     "format-disconnected": "[ <span color='#eb6f92'></span> ]",
     "tooltip-format-disconnected": "Disconnected",
-    "format-wifi": "[  {essid} ]",
+    "format-wifi": "[ <span color='#9ccfd8'> </span>{essid} ]",
     "format-ethernet": "[ Ethernet {essid} ]",
     "interval": 2,
     "tooltip": true,
@@ -116,7 +118,7 @@
     "tooltip-format": "Network: <big><b>{essid}</b></big>\nSignal strength: <b>{signaldBm}dBm ({signalStrength}%)</b>\nFrequency: <b>{frequency}MHz</b>\nInterface: <b>{ifname}</b>\nIP: <b>{ipaddr}/{cidr}</b>\nGateway: <b>{gwaddr}</b>\nNetmask: <b>{netmask}</b>"
   },
   "pulseaudio": {
-    "format": "[ {icon} {volume}% ]",
+    "format": "[ <span color='#9ccfd8'>{icon}</span> {volume}% ]",
     "format-muted": "[ <span color='#eb6f92'></span> Muted ]",
     "on-click": "pactl set-sink-mute 0 toggle",
     "format-icons": {

@@ -14,7 +14,7 @@ def get_leetcode_stats():
             "hard": data["hardSolved"],
         }
         waybar_output = {
-            "text": f"[ <span color='#9ccfd8'>Easy: {stats['easy']}</span> <span color='#f6c177'>Medium: {stats['medium']}</span> <span color='#eb6f92'>Hard: {stats['hard']}</span> ]",
+            "text": f"[ <span color='#9ccfd8'> {stats['easy']}</span> <span color='#f6c177'> {stats['medium']}</span> <span color='#eb6f92'> {stats['hard']}</span> ]",
             "tooltip": "LeetCode Statistics",
             "class": "leetcode-stats",
         }
