@@ -3,14 +3,13 @@
   "layer": "bottom",
   "reload_style_on_change": true,
   "spacing": 0,
-  "margin": 0,
+  "margin": "0",
   "modules-left": [
     "hyprland/workspaces",
     "hyprland/window",
   ],
   "modules-right": [
     "tray",
-    "custom/playerctl",
     "custom/wakatime",
     "custom/leetcode",
     "pulseaudio",
@@ -34,15 +33,6 @@
       "<span color='#eb6f92'></span>"
     ],
     "on-click": "killall htop || kitty --class global-float-big -e htop"
-  },
-  "custom/playerctl": {
-    "exec": "~/.config/waybar/scripts/player.sh",
-    "interval": 1,
-    "return-type": "json",
-    "on-click": "playerctl play-pause",
-    "on-click-right": "kitty --title 'Music Visualizer' -e cava",
-    "on-scroll-up": "playerctl next",
-    "on-scroll-down": "playerctl previous"
   },
   "custom/leetcode": {
     "interval": 3600,
