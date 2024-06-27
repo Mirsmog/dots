@@ -1,7 +1,7 @@
 return {
   "norcalli/nvim-colorizer.lua",
   config = function()
-    require("colorizer").setup({ "css", "scss", "html", "javascript", "typescript", "jsonc", "json" }, {
+    require("colorizer").setup({ "css", "lua", "scss", "html", "javascript", "typescript", "jsonc", "json" }, {
       RGB = true,
       RRGGBB = true,
       RRGGBBAA = true,
