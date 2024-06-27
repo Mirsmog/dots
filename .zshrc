@@ -116,11 +116,13 @@ alias par="sudo pacman -Rc"
 alias nvim="lvim"
 alias nvpn="~/.local/bin/nekoray/launcher"
 alias ff="fastfetch"
+alias ffg="fastfetch --config groups"
 alias ya="yarn"
 alias icat="kitten icat"
 alias hyprshot="$HOME/.local/bin/hyprshot"
 alias nvpn="/usr/local/bin/nekoray/launcher"
 alias cls="clear"
+alias cava="kitty @ set-spacing padding=0 margin=0 && cava"
 
 alias ls='exa --icons --color=always --group-directories-first'
 alias l='exa -alF --icons --color=always --group-directories-first'

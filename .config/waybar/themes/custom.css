@@ -1,2 +1,4 @@
-@define-color grayBg rgba(34, 36, 54, 1);
-@define-color accent rgba(23, 146, 153, 1);
+/* @define-color grayBg rgba(34, 36, 54, 1); */
+@define-color grayBg #1E1E2E;
+/* @define-color accent rgba(23, 146, 153, 1); */
+@define-color accent #7287fd;

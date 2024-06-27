@@ -21,4 +21,14 @@ lvim.builtin.which_key.mappings[";"] = {
   "<cmd>Telescope buffers previewer=false<cr>", "Find buffers"
 }
 
+lvim.builtin.which_key.mappings["os"] = {
+  "<cmd>ObsidianSearch<cr>", "Obsidian Search"
+}
+lvim.builtin.which_key.mappings["of"] = {
+  "<cmd>ObsidianQuickSwitch<cr>", "Obsidian Files"
+}
+lvim.builtin.which_key.mappings["ol"] = {
+  "<cmd>ObsidianLinks<cr>", "Obsidian Links"
+}
+
 lvim.builtin.telescope.defaults.mappings.n["q"] = telescopeActions.close
