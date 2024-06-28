@@ -1,0 +1,10 @@
+[manager]
+prepend_keymap = [
+  { on = ["g", "W"], run = "cd ~/.config/waybar", desc = "Go to the waybar directory" },
+  { on = ["g", "H"], run = "cd ~/.config/hypr", desc = "Go to the hyprland directory" },
+  { on = ["g", "P"], run = "cd ~/Pictures/Wallpapers/", desc = "Go to the Wallpapers directory" },
+  { on = ["g", "D"], run = "cd ~/Downloads", desc = "Go to the Downloads directory" },
+  { on = [ "T" ], run  = "plugin --sync hide-preview", desc = "Hide or show preview"},
+  { on  = [ "y" ], run = [ "yank", '''shell --confirm 'for path in "$@"; do echo "file://$path"; done | wl-copy -t text/uri-list'''' ] },
+]
+
