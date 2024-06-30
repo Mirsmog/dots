@@ -20,7 +20,6 @@ lvim.builtin.cmp.completion = {
 lvim.transparent_window = false
 lvim.colorscheme = 'gruvbox'
 lvim.builtin.nvimtree.setup.filters.custom = { "node_modules", ".git", ".vscode" }
-lvim.builtin.nvimtree.setup.view.side = 'right'
 lvim.builtin.nvimtree.setup.filters.dotfiles = true
 lvim.builtin.telescope.defaults.file_ignore_patterns = { "node_modules", "%.png", "%.jpg", "%.ttf", "%.otf", "%.woff",
   "%.woff2", "%.ico" }

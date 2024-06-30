@@ -1,6 +1,5 @@
 local telescopeActions = require("lvim.utils.modules").require_on_exported_call "telescope.actions"
 
-
 lvim.builtin.which_key.mappings["rf"] = {
   "<cmd>:RunFile<cr>", "Run File"
 }
@@ -8,12 +7,13 @@ lvim.builtin.which_key.mappings["rf"] = {
 lvim.keys.normal_mode["<C-n>"] = ":RunCode<CR>"
 lvim.keys.normal_mode["<C-a>"] = "gg<S-v>G"
 
+
 lvim.builtin.which_key.mappings["rr"] = {
   "<cmd>:RunCode<cr>", "Run Code line"
 }
 
 lvim.builtin.which_key.mappings["<leader>"] = {
-  "<cmd>lua require'lvim.core.telescope.custom-finders'.find_project_files {previewer = false, hidden = false}<CR>",
+  "<cmd>:Telescope file_browser path=%:p:h select_buffer=true initial_mode=normal<CR>",
   "Find File",
 }
 
