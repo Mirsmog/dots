@@ -6,13 +6,15 @@
 #titlebar {
   visibility: collapse;
 }
+
 #sidebar-header {
   visibility: collapse !important;
-} 
+}
 
 /* hides the native tabs */
 #TabsToolbar {
   visibility: collapse;
-}/* leaves space for the window buttons */
-#nav-bar {
 }
+
+/* leaves space for the window buttons */
+#nav-bar {}
