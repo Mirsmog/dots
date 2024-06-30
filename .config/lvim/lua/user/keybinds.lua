@@ -13,8 +13,21 @@ lvim.builtin.which_key.mappings["rr"] = {
 }
 
 lvim.builtin.which_key.mappings["<leader>"] = {
-  "<cmd>lua require'lvim.core.telescope.custom-finders'.find_project_files {previewer = false}<CR>",
+  "<cmd>lua require'lvim.core.telescope.custom-finders'.find_project_files {previewer = false, hidden = false}<CR>",
   "Find File",
+}
+
+
+lvim.builtin.which_key.mappings["qs"] = {
+  "<cmd>lua require('persistence').load()<cr>", "Restore Session"
+}
+
+lvim.builtin.which_key.mappings["ql"] = {
+  "<cmd>lua require('persistence').load({ last = true })<cr>", "Restore Last Session"
+}
+
+lvim.builtin.which_key.mappings["qd"] = {
+  "<cmd>lua require('persistence').stop()<cr>", "Don't Save Current Session"
 }
 
 lvim.builtin.which_key.mappings[";"] = {

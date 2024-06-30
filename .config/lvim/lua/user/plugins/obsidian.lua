@@ -48,7 +48,7 @@ return {
     workspaces = {
       {
         name = "main",
-        path = "~/Documents/obs/Second brain/",
+        path = "~/Documents/obs/Заметки/",
       },
     },
 
