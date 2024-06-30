@@ -1,5 +1,6 @@
 require("lvim.lsp.manager").setup("emmet_ls")
 
+
 table.insert(lvim.builtin.alpha.dashboard.section.buttons.entries,
   { "s", "  Open Last Session", "<cmd>lua require('persistence').load()<cr>" })
 
@@ -12,9 +13,12 @@ vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,
 
 lvim.format_on_save = true
 lvim.builtin.lualine.style = "default"
-lvim.builtin.cmp.formatting = { format = require("tailwindcss-colorizer-cmp").formatter }
+
+lvim.builtin.cmp.completion = {
+  completeopt = "menu,menuone,noinsert",
+}
 lvim.transparent_window = false
-lvim.colorscheme = 'solarized-osaka'
+lvim.colorscheme = 'gruvbox'
 lvim.builtin.nvimtree.setup.filters.custom = { "node_modules", ".git", ".vscode" }
 lvim.builtin.nvimtree.setup.view.side = 'right'
 lvim.builtin.nvimtree.setup.filters.dotfiles = true
