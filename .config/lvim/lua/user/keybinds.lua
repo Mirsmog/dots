@@ -4,12 +4,28 @@ lvim.builtin.which_key.mappings["rf"] = {
   "<cmd>:RunFile<cr>", "Run File"
 }
 
+lvim.builtin.which_key.mappings["f"] = {
+  "<cmd>Yazi<cr>", "Show Yazi"
+}
+
+
 lvim.keys.normal_mode["<C-n>"] = ":RunCode<CR>"
 lvim.keys.normal_mode["<C-a>"] = "gg<S-v>G"
 
 
+
+
+lvim.lsp.buffer_mappings.normal_mode["gr"] = { "<cmd>lua require('telescope.builtin').lsp_references()<CR>",
+  "Goto reference" }
+lvim.lsp.buffer_mappings.normal_mode["gd"] = { "<cmd>lua require('telescope.builtin').lsp_definitions()<CR>",
+  "Goto definition" }
+
 lvim.builtin.which_key.mappings["rr"] = {
   "<cmd>:RunCode<cr>", "Run Code line"
+}
+
+lvim.builtin.which_key.mappings["s'"] = {
+  "<cmd>:Telescope neoclip<cr>", "Clipboard History"
 }
 
 lvim.builtin.which_key.mappings["<leader>"] = {
@@ -17,11 +33,15 @@ lvim.builtin.which_key.mappings["<leader>"] = {
   "Find File",
 }
 
+lvim.builtin.which_key.mappings["sw"] = {
+  "<cmd>lua require('telescope.builtin').live_grep()<CR>",
+  "Find Word",
+}
+
 
 lvim.builtin.which_key.mappings["qs"] = {
   "<cmd>lua require('persistence').load()<cr>", "Restore Session"
 }
-
 lvim.builtin.which_key.mappings["ql"] = {
   "<cmd>lua require('persistence').load({ last = true })<cr>", "Restore Last Session"
 }

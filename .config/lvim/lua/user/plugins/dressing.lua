@@ -1,4 +1,12 @@
 return {
   'stevearc/dressing.nvim',
-  opts = {},
+  opts = {
+    input = {
+      mappings = {
+        n = {
+          ["q"] = "Close",
+        },
+      },
+    },
+  },
 }
