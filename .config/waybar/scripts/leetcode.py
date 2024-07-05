@@ -4,7 +4,7 @@ import json
 
 
 def get_leetcode_stats():
-    url = "https://alfa-leetcode-api.onrender.com/PhantomCrunhTz/solved"
+    url = "https://leetcode-stats-api.herokuapp.com/PhantomCrunhTz"
     response = requests.get(url)
     if response.status_code == 200:
         data = response.json()
@@ -20,7 +20,7 @@ def get_leetcode_stats():
         }
         return json.dumps(waybar_output)
     else:
-        return json.dumps({"text": "Error fetching data", "class": "error"})
+        return json.dumps({"text": "¯\_(ツ)_/¯", "class": "error"})
 
 
 if __name__ == "__main__":

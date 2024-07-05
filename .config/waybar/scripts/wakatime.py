@@ -30,7 +30,7 @@ def get_wakatime_stats():
             color = "#eb6f92"
 
         waybar_output = {
-            "text": f"[ <span color='{color}'> </span>{hours}h {minutes}m ]",
+            "text": f"[ <span color='{color}'> </span>{hours}h {minutes}m ]",
             "class": "wakatime-stats",
         }
         return json.dumps(waybar_output)

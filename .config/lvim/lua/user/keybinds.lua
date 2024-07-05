@@ -17,6 +17,9 @@ lvim.keys.normal_mode["<C-a>"] = "gg<S-v>G"
 
 lvim.lsp.buffer_mappings.normal_mode["gr"] = { "<cmd>lua require('telescope.builtin').lsp_references()<CR>",
   "Goto reference" }
+
+lvim.builtin.which_key.mappings["yf"] = { "<cmd>lua vim.ui.open(vim.fn.expand('%'))<CR>", "Open current file" }
+
 lvim.lsp.buffer_mappings.normal_mode["gd"] = { "<cmd>lua require('telescope.builtin').lsp_definitions()<CR>",
   "Goto definition" }
 

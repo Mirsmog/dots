@@ -2,11 +2,8 @@ return {
   "nvim-telescope/telescope-file-browser.nvim",
   dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
   config = function()
-    local actions = require('telescope.actions')
-    local builtin = require("telescope.builtin")
     local fb_actions = require 'telescope'.extensions.file_browser.actions;
-
-    require("telescope").setup {
+    require("telescope").setup({
       extensions = {
         pickers = {
           lsp_references = {
@@ -30,7 +27,7 @@ return {
           },
         },
       },
-    }
+    })
     -- To get telescope-file-browser loaded and working with telescope,
     -- you need to call load_extension, somewhere after setup function:
     require("telescope").load_extension "file_browser"

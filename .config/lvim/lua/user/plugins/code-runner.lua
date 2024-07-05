@@ -3,7 +3,8 @@ return {
   config = function()
     require('code_runner').setup({
       filetype = {
-        typescript = "ts-node"
+        typescript = "ts-node",
+        go = "go run"
       },
       mode = "float",
       float = {

@@ -12,7 +12,6 @@ vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,
 
 lvim.format_on_save = true
 lvim.builtin.lualine.style = "default"
-
 lvim.builtin.cmp.completion = {
   completeopt = "menu,menuone,noinsert",
 }
