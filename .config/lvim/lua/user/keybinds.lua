@@ -11,7 +11,8 @@ lvim.builtin.which_key.mappings["f"] = {
 
 lvim.keys.normal_mode["<C-n>"] = ":RunCode<CR>"
 lvim.keys.normal_mode["<C-a>"] = "gg<S-v>G"
-
+lvim.keys.normal_mode["<S-l>"] = ":BufferLineCycleNext<CR>"
+lvim.keys.normal_mode["<S-h>"] = ":BufferLineCyclePrev<CR>"
 
 
 

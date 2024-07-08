@@ -15,7 +15,7 @@ return {
         },
         file_browser = {
           theme = "dropdown",
-          -- disables netrw and use telescope-file-browser in its place
+          dir_icon = "󰉖",
           hijack_netrw = true,
           mappings = {
             ["i"] = {

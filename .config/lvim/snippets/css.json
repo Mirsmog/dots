@@ -3,7 +3,11 @@
     "name": "Media Query (Max-Width)",
     "scope": "css",
     "prefix": "@ml",
-    "body": ["@media screen and (max-width: $1) {", "  $2", "}"],
+    "body": [
+      "@media screen and (max-width: $1) {",
+      "  $2",
+      "}"
+    ],
     "description": "Создает медиа-запрос с максимальной шириной."
   },
   "Reset style": {

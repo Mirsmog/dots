@@ -14,6 +14,12 @@ return {
         cterm_color = "185",
         name = "Js",
       },
+      tsx = {
+        icon = "",
+        color = "#1354bf",
+        cterm_color = "26",
+        name = "Tsx",
+      },
     },
   }
 }
