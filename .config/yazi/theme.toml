@@ -1,5 +1,3 @@
-[flavor]
-use = "tokyo-night"
 
 [manager]
 cwd = { fg = "#94e2d5" }
@@ -671,3 +669,5 @@ prepend_rules = [
 ]
 
 
+[flavor]
+use = "tokyo-night"

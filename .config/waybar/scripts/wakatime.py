@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 import requests
 import json
-from datetime import datetime, timedelta
 import os
+from datetime import datetime, timedelta
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -21,16 +21,23 @@ def get_wakatime_stats():
         hours, minutes = total_duration.split(":")[:2]
         hours = int(hours)
 
-        color = "#e0def4"
+        color = ""
+        icon = ""
         if hours < 3:
             color = "#9ccfd8"
+            icon = " "
         elif hours < 5:
             color = "#f6c177"
+            icon = " "
+        elif hours <= 8:
+            color = "#c4a7e7"
+            icon = " "
         else:
             color = "#eb6f92"
+            icon = " "
 
         waybar_output = {
-            "text": f"[ <span color='{color}'> </span>{hours}h {minutes}m ]",
+            "text": f"[ <span color='{color}'>{icon}</span>{hours}h {minutes}m ]",
             "class": "wakatime-stats",
         }
         return json.dumps(waybar_output)

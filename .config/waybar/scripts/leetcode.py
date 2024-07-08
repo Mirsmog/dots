@@ -8,19 +8,28 @@ def get_leetcode_stats():
     response = requests.get(url)
     if response.status_code == 200:
         data = response.json()
-        stats = {
-            "easy": data["easySolved"],
-            "medium": data["mediumSolved"],
-            "hard": data["hardSolved"],
-        }
+
+        stats = [
+            {"icon": " ", "value": data["easySolved"], "color": "#9ccfd8"},
+            {"icon": " ", "value": data["mediumSolved"], "color": "#f6c177"},
+            {"icon": " ", "value": data["hardSolved"], "color": "#eb6f92"},
+        ]
+
         waybar_output = {
-            "text": f"[ <span color='#9ccfd8'> {stats['easy']}</span> <span color='#f6c177'> {stats['medium']}</span> <span color='#eb6f92'> {stats['hard']}</span> ]",
+            "text": "[ "
+            + " ".join(
+                [
+                    f"<span color='{stat['color']}'>{stat['icon']}{stat['value']}</span>"
+                    for stat in stats
+                ]
+            )
+            + " ]",
             "tooltip": "LeetCode Statistics",
             "class": "leetcode-stats",
         }
         return json.dumps(waybar_output)
     else:
-        return json.dumps({"text": "¯\_(ツ)_/¯", "class": "error"})
+        return json.dumps({"text": "[  ]", "class": "error"})
 
 
 if __name__ == "__main__":
