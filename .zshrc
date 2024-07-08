@@ -1,1 +1,1 @@
-/home/zwine/.zshrc
+../.zshrc

@@ -1,1 +1,1 @@
-/home/zwine/.zprofile
+../.zprofile
