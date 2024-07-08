@@ -1,22 +1,12 @@
 #!/bin/bash
 
+source './dirs.conf'
+
 source_dir="$HOME/.config"
 target_dir="$HOME/dots/.config"
 
-configs=(
-"cava"
-"fastfetch"
-"hypr"
-"kitty"
-"lvim"
-"nvim"
-"ranger"
-"waybar"
-"yazi"
-)
-
-for config in "${configs[@]}"; do
-  ln -sfn "$source_dir/$config" "$target_dir/$config"
+for dir in "${configs_dir[@]}"; do
+  ln -sfn "$source_dir/$dir" "$target_dir/$dir"
 done
 
 echo "Symbolic links created for all configurations."
