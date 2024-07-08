@@ -12,9 +12,18 @@ vim.opt.fillchars = {
 vim.opt.termguicolors = true
 vim.opt.wrap = true
 vim.opt.cmdheight = 0
+lvim.builtin.lualine.sections.lualine_a = {
+  {
+    function()
+      return ' '
+    end,
+    padding = { left = 0, right = 2 }, -- We don't need space before this
+    color = { fg = "black" },          -- Sets highlighting of component
+  }
+}
+
 
 lvim.format_on_save = true
-lvim.builtin.lualine.style = "default"
 lvim.builtin.cmp.completion = {
   completeopt = "menu,menuone,noinsert",
 }

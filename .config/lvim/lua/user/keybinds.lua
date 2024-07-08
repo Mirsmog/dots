@@ -8,13 +8,12 @@ lvim.builtin.which_key.mappings["f"] = {
   "<cmd>Yazi<cr>", "Show Yazi"
 }
 
+lvim.builtin["terminal"].open_mapping = "<c-/>"
 
 lvim.keys.normal_mode["<C-n>"] = ":RunCode<CR>"
 lvim.keys.normal_mode["<C-a>"] = "gg<S-v>G"
 lvim.keys.normal_mode["<S-l>"] = ":BufferLineCycleNext<CR>"
 lvim.keys.normal_mode["<S-h>"] = ":BufferLineCyclePrev<CR>"
-
-
 
 lvim.lsp.buffer_mappings.normal_mode["gr"] = { "<cmd>lua require('telescope.builtin').lsp_references()<CR>",
   "Goto reference" }
@@ -67,5 +66,6 @@ lvim.builtin.which_key.mappings["of"] = {
 lvim.builtin.which_key.mappings["ol"] = {
   "<cmd>ObsidianLinks<cr>", "Obsidian Links"
 }
+
 
 lvim.builtin.telescope.defaults.mappings.n["q"] = telescopeActions.close
