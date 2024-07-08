@@ -1,164 +1,98 @@
+local actions = require("telescope.actions")
 return {
-  "telescope.nvim",
-  dependencies = {
-    {
-      "nvim-telescope/telescope-fzf-native.nvim",
-      build = "make",
-    },
-    "nvim-telescope/telescope-file-browser.nvim",
-  },
-  keys = {
-    {
-      "<leader>fP",
-      function()
-        require("telescope.builtin").find_files({
-          cwd = require("lazy.core.config").options.root,
-        })
-      end,
-      desc = "Find Plugin File",
-    },
-    {
-      ";f",
-      function()
-        local builtin = require("telescope.builtin")
-        builtin.find_files({
-          no_ignore = false,
-          hidden = true,
-        })
-      end,
-      desc = "Lists files in your current working directory, respects .gitignore",
-    },
-    {
-      ";r",
-      function()
-        local builtin = require("telescope.builtin")
-        builtin.live_grep({
-          additional_args = { "--hidden" },
-        })
-      end,
-      desc = "Search for a string in your current working directory and get results live as you type, respects .gitignore",
-    },
-    {
-      "\\",
-      function()
-        local builtin = require("telescope.builtin")
-        builtin.buffers({
-          initial_mode = "normal",
-        })
-      end,
-      desc = "Lists open buffers",
-    },
-    {
-      ";t",
-      function()
-        local builtin = require("telescope.builtin")
-        builtin.help_tags()
-      end,
-      desc = "Lists available help tags and opens a new window with the relevant help info on <cr>",
-    },
-    {
-      ";;",
-      function()
-        local builtin = require("telescope.builtin")
-        builtin.resume()
-      end,
-      desc = "Resume the previous telescope picker",
-    },
-    {
-      ";e",
-      function()
-        local builtin = require("telescope.builtin")
-        builtin.diagnostics()
-      end,
-      desc = "Lists Diagnostics for all open buffers or a specific buffer",
-    },
-    {
-      ";s",
-      function()
-        local builtin = require("telescope.builtin")
-        builtin.treesitter()
-      end,
-      desc = "Lists Function names, variables, from Treesitter",
-    },
-    {
-      "sf",
-      function()
-        local telescope = require("telescope")
-
-        local function telescope_buffer_dir()
-          return vim.fn.expand("%:p:h")
-        end
-
-        telescope.extensions.file_browser.file_browser({
-          path = "%:p:h",
-          cwd = telescope_buffer_dir(),
-          respect_gitignore = false,
-          hidden = true,
-          grouped = true,
-          previewer = false,
-          initial_mode = "normal",
-          layout_config = { height = 40 },
-        })
-      end,
-      desc = "Open File Browser with the path of the current buffer",
-    },
-  },
-  config = function(_, opts)
-    local telescope = require("telescope")
-    local actions = require("telescope.actions")
-    local fb_actions = require("telescope").extensions.file_browser.actions
-
-    opts.defaults = vim.tbl_deep_extend("force", opts.defaults, {
-      wrap_results = true,
-      layout_strategy = "horizontal",
-      layout_config = { prompt_position = "top" },
-      sorting_strategy = "ascending",
-      winblend = 0,
-      mappings = {
-        n = {},
-      },
-    })
-    opts.pickers = {
-      diagnostics = {
-        theme = "ivy",
-        initial_mode = "normal",
+  "nvim-telescope/telescope.nvim",
+  config = function()
+    require("telescope").setup({
+      defaults = {
+        prompt_prefix = " ",
+        selection_caret = " ",
+        entry_prefix = "  ",
+        initial_mode = "insert",
+        selection_strategy = "reset",
+        sorting_strategy = "ascending",
+        layout_strategy = "horizontal",
         layout_config = {
-          preview_cutoff = 9999,
+          horizontal = {
+            mirror = false,
+          },
+          vertical = {
+            mirror = false,
+          },
         },
-      },
-    }
-    opts.extensions = {
-      file_browser = {
-        theme = "dropdown",
-        -- disables netrw and use telescope-file-browser in its place
-        hijack_netrw = true,
+        file_sorter = require("telescope.sorters").get_fuzzy_file,
+        file_ignore_patterns = { "^./.git/", "^node_modules/", "^vendor/" },
+        generic_sorter = require("telescope.sorters").get_generic_fuzzy_sorter,
+        path_display = { "smart" },
+        winblend = 0,
+        border = {},
+        borderchars = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
+
+        color_devicons = true,
+        use_less = true,
+        set_env = { ["COLORTERM"] = "truecolor" }, -- default = nil,
+        file_previewer = require("telescope.previewers").vim_buffer_cat.new,
+        grep_previewer = require("telescope.previewers").vim_buffer_vimgrep.new,
+        qflist_previewer = require("telescope.previewers").vim_buffer_qflist.new,
+        buffer_previewer_maker = require("telescope.previewers").buffer_previewer_maker,
         mappings = {
-          -- your custom insert mode mappings
-          ["n"] = {
-            -- your custom normal mode mappings
-            ["N"] = fb_actions.create,
-            ["h"] = fb_actions.goto_parent_dir,
-            ["/"] = function()
-              vim.cmd("startinsert")
-            end,
-            ["<C-u>"] = function(prompt_bufnr)
-              for i = 1, 10 do
-                actions.move_selection_previous(prompt_bufnr)
-              end
-            end,
-            ["<C-d>"] = function(prompt_bufnr)
-              for i = 1, 10 do
-                actions.move_selection_next(prompt_bufnr)
-              end
-            end,
-            ["<PageUp>"] = actions.preview_scrolling_up,
-            ["<PageDown>"] = actions.preview_scrolling_down,
+          i = {
+            ["<C-n>"] = actions.move_selection_next,
+            ["<C-p>"] = actions.move_selection_previous,
+            ["<C-c>"] = actions.close,
+            ["<C-j>"] = actions.cycle_history_next,
+            ["<C-k>"] = actions.cycle_history_prev,
+            ["<C-q>"] = actions.smart_send_to_qflist + actions.open_qflist,
+            ["<CR>"] = actions.select_default + actions.center,
+          },
+          n = {
+            ["<C-n>"] = actions.move_selection_next,
+            ["<C-p>"] = actions.move_selection_previous,
+            ["<C-q>"] = actions.smart_send_to_qflist + actions.open_qflist,
+            ["q"] = actions.close,
           },
         },
       },
-    }
-    telescope.setup(opts)
-    require("telescope").load_extension("fzf")
-    require("telescope").load_extension("file_browser")
+      pickers = {
+        find_files = {
+          theme = "dropdown",
+          hidden = true,
+        },
+        oldfiles = {
+          theme = "dropdown",
+        },
+        live_grep = {
+          theme = "dropdown",
+          only_sort_text = true,
+        },
+        grep_string = {
+          theme = "dropdown",
+          only_sort_text = true,
+        },
+        buffers = {
+          theme = "dropdown",
+          initial_mode = "normal",
+          mappings = {
+            i = {
+              ["<C-d>"] = actions.delete_buffer,
+            },
+            n = {
+              ["dd"] = actions.delete_buffer,
+            },
+          },
+        },
+        colorscheme = {
+          theme = "dropdown",
+          enable_preview = true,
+        },
+      },
+      extensions = {
+        fzf = {
+          fuzzy = true, -- false will only do exact matching
+          override_generic_sorter = true, -- override the generic sorter
+          override_file_sorter = true, -- override the file sorter
+          case_mode = "smart_case", -- or 'ignore_case' or 'respect_case'
+        },
+      },
+    })
   end,
 }
