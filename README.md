@@ -11,8 +11,8 @@ https://github.com/Mirsmog/dots/assets/108391860/0b79e5af-b459-428d-8b45-ccb3044
 |BAR|[Waybar](https://github.com/Alexays/Waybar)|
 |LAUNCHER|[Rofi](https://github.com/lbonn/rofi)|
 |TERMINAL|[Kitty](https://sw.kovidgoyal.net/kitty)|
-|SHELL|[Zsh](https://fishshell.com/)|
-|FILE|[Yazi](https://yazi-rs.github.io/)|
+|SHELL|[Zsh](https://www.zsh.org/)|
+|FILE MANAGER|[Yazi](https://yazi-rs.github.io/)|
 |NEOVIM|[LunarVim](https://www.lunarvim.org/)|
 |GTK3|[Catppuccin GTK](https://github.com/catppuccin/gtk)|
 |ICON|[Rose Pine Icons](https://github.com/rose-pine/gtk)|
