@@ -26,11 +26,8 @@ def get_wakatime_stats():
         if hours < 3:
             color = "#9ccfd8"
             icon = " "
-        elif hours < 5:
+        elif hours <= 7:
             color = "#f6c177"
-            icon = " "
-        elif hours <= 8:
-            color = "#c4a7e7"
             icon = " "
         else:
             color = "#eb6f92"
