@@ -15,8 +15,10 @@ if [ -d "$directory" ]; then
   fi
 
   echo $random_background >$last_background_file
-
+  
   hyprctl hyprpaper unload all
   hyprctl hyprpaper preload $random_background
   hyprctl hyprpaper wallpaper "$monitor, $random_background"
+  # wal -n -q -i $random_background
+  # pywalfox update
 fi

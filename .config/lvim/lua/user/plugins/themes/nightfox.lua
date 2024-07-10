@@ -3,8 +3,7 @@ return {
   config = function()
     require('nightfox').setup({
       options = {
-        terminal_colors = true, -- Set terminal colors (vim.g.terminal_color_*) used in `:terminal`
-        styles = {              -- Style to be applied to different syntax groups
+        styles = { -- Style to be applied to different syntax groups
           variables = "italic",
           constants = "italic",
           keywords = "italic",

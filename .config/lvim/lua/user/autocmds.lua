@@ -3,7 +3,6 @@ augroup kitty_mp
     autocmd!
     au VimEnter * :silent !kitty @ set-spacing padding=0 margin=0
     au VimLeave * :silent !kitty @ set-spacing padding=default margin=default
-    au VimLeave * :silent !kitty @ set-colors ~/.config/kitty/current-theme.conf
 augroup END
 ]])
 

@@ -26,6 +26,7 @@ tooltip label {
 .modules-right {
   padding-left: 10px;
   background-color: @grayBg;
+
 }
 
 .modules-right * {
