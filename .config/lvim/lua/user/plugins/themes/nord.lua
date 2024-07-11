@@ -1,1 +1,0 @@
-return { "shaunsingh/nord.nvim" }
