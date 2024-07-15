@@ -16,6 +16,7 @@ return {
         file_browser = {
           theme = "dropdown",
           dir_icon = "󰉖",
+          dir_icon_hl = "NvimTreeFolderIcon",
           hijack_netrw = true,
           mappings = {
             ["i"] = {

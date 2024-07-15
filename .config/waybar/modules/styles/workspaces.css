@@ -1,8 +1,6 @@
 #workspaces {
   font-size: 14px;
-  background-color: @grayBg;
   margin-right: 8px;
-  padding-right: 4px;
 }
 
 #workspaces button * {
@@ -12,6 +10,7 @@
 }
 
 #workspaces button {
+  background-color: @grayBg;
   padding: 0 8px;
   font-size: inherit;
 }
@@ -27,6 +26,7 @@
 #workspaces button.special {
   color: @text;
   font-size: 14px;
+  padding-right: 12px
 }
 
 #workspaces button.empty {
@@ -36,6 +36,6 @@
 
 #workspaces button.active {
   color: @text;
-  background-color: @accent;
+  background-color: transparent;
   ;
 }

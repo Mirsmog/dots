@@ -4,6 +4,9 @@
 gaps_in=$(hyprctl getoption general:gaps_in | grep 'custom type' | awk '{print $3}')
 gaps_out=$(hyprctl getoption general:gaps_out | grep 'custom type' | awk '{print $3}')
 
+
+
+
 GAPS_FILE="$HOME/.hyprland-gaps.conf"
 
 if [ ! -f "$GAPS_FILE" ]; then
@@ -11,10 +14,15 @@ if [ ! -f "$GAPS_FILE" ]; then
   echo "\$var_gaps_out=0" >> "$GAPS_FILE"
 fi
 
+
 function save_gaps() {
+  new_width=$(( 1920 - gaps_out * 2 ))
+  new_height=$(( 1080 - gaps_out * 2 ))
+
   echo "\$var_gaps_in=$gaps_in" > "$GAPS_FILE"
   echo "\$var_gaps_out=$gaps_out" >> "$GAPS_FILE"
-
+  echo "\$new_width=$new_width" >> "$GAPS_FILE"
+  echo "\$new_height=$new_height" >> "$GAPS_FILE"
 }
 
 # Function to increase gaps_in
