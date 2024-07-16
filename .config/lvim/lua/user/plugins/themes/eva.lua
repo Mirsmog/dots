@@ -38,6 +38,6 @@ return {
         b = { fg = colors.color4, bg = colors.color5 },
       },
     }
-    lvim.builtin.lualine.options.theme = eva01_lualine
+    -- lvim.builtin.lualine.options.theme = eva01_lualine
   end,
 }
