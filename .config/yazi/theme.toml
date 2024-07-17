@@ -2,6 +2,7 @@
 [manager]
 cwd = { fg = "#94e2d5" }
 
+
 # Hovered
 hovered         = { fg = "#1e1e2e", bg = "#89b4fa" }
 preview_hovered = { underline = true }
@@ -17,7 +18,7 @@ marker_selected = { fg = "#89b4fa", bg = "#89b4fa" }
 
 # Tab
 tab_active   = { fg = "#1e1e2e", bg = "#cdd6f4" }
-tab_inactive = { fg = "#cdd6f4", bg = "#45475a" }
+tab_inactive = { fg = "#cdd6f4", bg = "reset" }
 tab_width    = 1
 
 # Count
@@ -33,19 +34,19 @@ border_style  = { fg = "#7f849c" }
 syntect_theme = "~/.config/yazi/Catppuccin-mocha.tmTheme"
 
 [status]
-separator_open  = ""
-separator_close = ""
-separator_style = { fg = "#45475a", bg = "#45475a" }
+separator_open  = ""
+separator_close = ""
+separator_style = { fg = "#45475a", bg = "reset" }
 
 # Mode
-mode_normal = { fg = "#1e1e2e", bg = "#89b4fa", bold = true }
-mode_select = { fg = "#1e1e2e", bg = "#a6e3a1", bold = true }
-mode_unset  = { fg = "#1e1e2e", bg = "#f2cdcd", bold = true }
+mode_normal = { bg = "reset", fg = "#89b4fa", bold = true }
+mode_select = { bg = "reset", fg = "#a6e3a1", bold = true }
+mode_unset  = { bg = "reset", fg = "#f2cdcd", bold = true }
 
 # Progress
 progress_label  = { fg = "#ffffff", bold = true }
-progress_normal = { fg = "#89b4fa", bg = "#45475a" }
-progress_error  = { fg = "#f38ba8", bg = "#45475a" }
+progress_normal = { fg = "#89b4fa", bg = "reset" }
+progress_error  = { fg = "#f38ba8", bg = "reset" }
 
 # Permissions
 permissions_t = { fg = "#89b4fa" }

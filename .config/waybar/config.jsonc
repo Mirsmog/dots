@@ -1,31 +1,29 @@
 {
-  "position": "top",
-  "layer": "bottom",
+  "position": "bottom",
   "reload_style_on_change": true,
+  "height": 0,
   "spacing": 0,
-  "height": 10,
-  "margin": "0",
+  "margin-bottom": 0,
   "modules-left": [
-    "hyprland/workspaces",
-    "hyprland/window",
-  ],
-  "modules-right": [
-    "tray",
-    "custom/wakatime",
-    "custom/leetcode",
-    "pulseaudio",
     "cpu",
     "memory",
-    "network",
+    "tray"
+  ],
+  "modules-center": [
+    "hyprland/workspaces"
+  ],
+  "modules-right": [
+    "pulseaudio",
     "hyprland/language",
-    "clock",
+    "network",
+    "clock"
   ],
   "cpu": {
     "interval": 1,
-    "format": "[ {icon} {usage}% ]",
+    "format": "{icon} {usage}%",
     "format-icons": [
-      "<span color='#9ccfd8'></span>",
-      "<span color='#9ccfd8'></span>",
+      "<span color='#e0def4'></span>",
+      "<span color='#e0def4'></span>",
       "<span color='#9ccfd8'></span>",
       "<span color='#9ccfd8'></span>",
       "<span color='#c4a7e7'></span>",
@@ -35,25 +33,12 @@
     ],
     "on-click": "killall htop || kitty --class global-float-big -e htop"
   },
-  "custom/leetcode": {
-    "interval": 3600,
-    "return-type": "json",
-    "exec": "~/.config/waybar/scripts/leetcode.py",
-    "on-click": "firefox -new-tab 'https://leetcode.com/problemset/'",
-    "exec-if": "ping -c 1 -W 1 8.8.8.8"
-  },
-  "custom/wakatime": {
-    "interval": 1800,
-    "return-type": "json",
-    "exec": "~/.config/waybar/scripts/wakatime.py",
-    "exec-if": "ping -c 1 -W 1 8.8.8.8"
-  },
   "memory": {
     "interval": 1,
-    "format": "[ {icon} {percentage}% ]",
+    "format": "{icon} {percentage}%",
     "format-icons": [
-      "<span color='#9ccfd8'></span>",
-      "<span color='#9ccfd8'></span>",
+      "<span color='#e0def4'></span>",
+      "<span color='#e0def4'></span>",
       "<span color='#9ccfd8'></span>",
       "<span color='#9ccfd8'></span>",
       "<span color='#c4a7e7'></span>",
@@ -67,50 +52,46 @@
   },
   "tray": {
     "spacing": 10,
-    "icon-size": 14
+    "icon-size": 12
   },
   "hyprland/workspaces": {
     "show-special": true,
     "format": "{icon}",
     "on-click": "activate",
     "format-icons": {
-      "1": "一",
-      "2": "二",
-      "3": "三",
-      "4": "四",
-      "5": "五",
-      "6": "六",
-      "7": "七",
-      "8": "八",
-      "9": "九",
-      "stash": "<span font='bold'></span>"
+      "1": "󰫍",
+      "2": "󰫍",
+      "3": "󰫍",
+      "4": "󰫍",
+      "5": "󰫍",
+      "6": "󰫍",
+      "stash": ""
     },
     "tooltip": false,
     "persistent_workspaces": {
-      "*": 9
+      "*": 6
     }
   },
   "hyprland/language": {
-    "format": "[ {} ]",
-    "min-length": 6,
-    "format-en": "🇺🇸",
-    "format-ru": "🇷🇺"
+    "format": "{}",
+    "format-en": "US",
+    "format-ru": "RU"
   },
   "network": {
     "format-linked": "󰈀 {ifname} (No IP)",
-    "format-disconnected": "[ <span color='#eb6f92'></span> ]",
+    "format-disconnected": "<span color='#eb6f92'></span>",
     "tooltip-format-disconnected": "Disconnected",
-    "format-wifi": "[ <span color='#9ccfd8'> </span>{essid} ]",
-    "format-ethernet": "[ Ethernet {essid} ]",
+    "format-wifi": " {essid}",
+    "format-ethernet": "sas {essid}",
     "interval": 2,
     "tooltip": true,
-    "on-click-right": "kitty -e nmtui",
-    "format-alt": "[ <span foreground='#9ccfd8'> {bandwidthDownBytes}</span> <span foreground='#c4a7e7'> {bandwidthUpBytes}</span> ]",
+    "on-click-right": "python ~/.config/rofi/network/network.py",
+    "format-alt": "<span foreground='#9ccfd8'> {bandwidthDownBytes}</span> <span foreground='#c4a7e7'> {bandwidthUpBytes}</span>",
     "tooltip-format": "Network: <big><b>{essid}</b></big>\nSignal strength: <b>{signaldBm}dBm ({signalStrength}%)</b>\nFrequency: <b>{frequency}MHz</b>\nInterface: <b>{ifname}</b>\nIP: <b>{ipaddr}/{cidr}</b>\nGateway: <b>{gwaddr}</b>\nNetmask: <b>{netmask}</b>"
   },
   "pulseaudio": {
-    "format": "[ <span color='#9ccfd8'>{icon}</span> {volume}% ]",
-    "format-muted": "[ <span color='#eb6f92'></span> Muted ]",
+    "format": "{icon} {volume}%",
+    "format-muted": "<span color='#eb6f92'></span> Muted",
     "on-click": "pactl set-sink-mute 0 toggle",
     "format-icons": {
       "default": [
@@ -126,8 +107,8 @@
     "smooth-scrolling-threshold": 1.5
   },
   "clock": {
-    "format": "[  {:%H:%M} ]",
-    "format-alt": "[  {:%d·%m·%y} ]",
+    "format": " {:%H:%M}",
+    "format-alt": " {:%d·%m·%y}",
     "tooltip-format": "<tt>{calendar}</tt>",
     "calendar": {
       "mode": "month",

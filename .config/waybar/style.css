@@ -4,3 +4,30 @@
 @import './modules/styles/global.css';
 @import './modules/styles/tray.css';
 @import './modules/styles/workspaces.css';
+
+.modules-left * {
+  margin-left: 12px;
+}
+
+.modules-right,
+.modules-left {
+  margin-bottom: -2px;
+}
+
+.modules-left,
+.modules-center,
+.modules-right {
+  border-radius: 100%;
+}
+
+.modules-right * {
+  margin-right: 16px;
+}
+
+#custom-date,
+#clock,
+#network,
+#pulseaudio {
+  color: inherit;
+  font-size: inherit;
+}

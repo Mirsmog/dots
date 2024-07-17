@@ -1,41 +1,51 @@
 #workspaces {
-  font-size: 14px;
-  margin-right: 8px;
+  font-size: 20px;
+}
+
+#workspaces button {
+  margin: 0px 6px;
+  padding: 0px 4px;
+  font-weight: 400;
+  font-size: 12px;
 }
 
 #workspaces button * {
   color: inherit;
   font-size: inherit;
-  font-weight: 400;
-}
-
-#workspaces button {
-  background-color: @grayBg;
-  padding: 0 8px;
-  font-size: inherit;
 }
 
 #workspaces button.persistent {
   color: @text;
-  padding: 0px 8px;
-  padding-bottom: 1.5px;
+  padding: 0px 4px;
+  margin: 0px 6px;
   font-size: inherit;
-  border-color: @text;
 }
 
 #workspaces button.special {
   color: @text;
-  font-size: 14px;
-  padding-right: 12px
+  /* margin: 6px 12px; */
+  font-size: 13px;
 }
 
+#workspaces button.special.active {}
+
 #workspaces button.empty {
-  border-color: transparent;
   color: @textDawn;
+  color: #393552;
+}
+
+#workspaces button:hover {
+  color: @text;
 }
 
 #workspaces button.active {
-  color: @text;
-  background-color: transparent;
-  ;
+  color: @accent;
+}
+
+#workspaces button.active:hover {
+  color: @love;
+  border-color: @love;
+  transition:
+    color 0.2s ease-in,
+    border-color 0.2s ease-in;
 }

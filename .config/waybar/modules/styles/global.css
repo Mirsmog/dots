@@ -2,7 +2,7 @@
   all: initial;
   font-family: 'Cascadia Code', 'Font Awesome 6 Pro';
   font-weight: bold;
-  font-size: 12px;
+  font-size: 10px;
   min-height: 0;
   color: @text;
 }
@@ -10,7 +10,7 @@
 window#waybar {
   transition-property: background-color;
   transition-duration: 0.5s;
-  background-color: @accent;
+  background-color: rgba(2, 2, 33, 0.8);
 }
 
 tooltip {
@@ -21,30 +21,4 @@ tooltip {
 
 tooltip label {
   padding: 4px 8px;
-}
-
-.modules-right {
-  padding-left: 10px;
-  background-color: @grayBg;
-
-}
-
-.modules-right * {
-  margin-right: 10px;
-}
-
-
-#custom-date,
-#window,
-#clock,
-#network,
-#pulseaudio {
-  color: inherit;
-  font-size: inherit;
-}
-
-#window * {
-  padding-top: 5px;
-  font-size: 14px;
-  font-weight: 400;
 }
