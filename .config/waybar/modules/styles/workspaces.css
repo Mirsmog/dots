@@ -15,7 +15,7 @@
 }
 
 #workspaces button.persistent {
-  color: @text;
+  color: #cdd6f4;
   padding: 0px 4px;
   margin: 0px 6px;
   font-size: inherit;
@@ -31,7 +31,7 @@
 
 #workspaces button.empty {
   color: @textDawn;
-  color: #393552;
+  color: #45475a;
 }
 
 #workspaces button:hover {

@@ -8,7 +8,7 @@ vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,
 vim.g.css_variables_files = { "./src/assets/styles/vars.css" }
 vim.opt.termguicolors = true
 
-lvim.transparent_window = true
-lvim.colorscheme = 'eva01-ghost'
+lvim.transparent_window = false
+lvim.colorscheme = 'nightfox'
 lvim.format_on_save = true
 lvim.builtin.bufferline.active = false

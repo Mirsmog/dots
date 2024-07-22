@@ -17,6 +17,8 @@ lvim.builtin.lualine.sections.lualine_a = {
       return ''
     end,
     padding = { left = 1, right = 2 },
-    color = { gui = "bold", fg = nil },
+    color = { gui = "bold" },
   }
 }
+
+lvim.builtin.lualine.style = "default"

@@ -1,8 +1,10 @@
 {
   "position": "bottom",
+  // "position": "top",
   "reload_style_on_change": true,
   "height": 0,
   "spacing": 0,
+  "layer": "top",
   "margin-bottom": 0,
   "modules-left": [
     "cpu",
@@ -65,11 +67,12 @@
       "4": "󰫍",
       "5": "󰫍",
       "6": "󰫍",
+      "7": "󰫍",
       "stash": ""
     },
     "tooltip": false,
     "persistent_workspaces": {
-      "*": 6
+      "*": 7
     }
   },
   "hyprland/language": {

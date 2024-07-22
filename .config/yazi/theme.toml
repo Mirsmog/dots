@@ -72,7 +72,7 @@ title   = {}
 hovered = { underline = true }
 
 [which]
-mask            = { bg = "#313244" }
+mask            = { bg = "reset" }
 cand            = { fg = "#94e2d5" }
 rest            = { fg = "#9399b2" }
 desc            = { fg = "#f5c2e7" }
