@@ -1,0 +1,776 @@
+
+
+███╗   ██╗██╗   ██╗██╗███╗   ███╗      ██╗██████╗ ███████╗
+████╗  ██║██║   ██║██║████╗ ████║      ██║██╔══██╗██╔════╝
+██╔██╗ ██║██║   ██║██║██╔████╔██║█████╗██║██║  ██║█████╗  
+██║╚██╗██║╚██╗ ██╔╝██║██║╚██╔╝██║╚════╝██║██║  ██║██╔══╝  
+██║ ╚████║ ╚████╔╝ ██║██║ ╚═╝ ██║      ██║██████╔╝███████╗
+╚═╝  ╚═══╝  ╚═══╝  ╚═╝╚═╝     ╚═╝      ╚═╝╚═════╝ ╚══════╝
+                                                          
+
+
+*nvim-ide* nvim-ide
+
+Author:   Louis DeLosSantos <louis.delos@gmail.com>
+Homepage: <https://github.com/ldelossa/nvim-ide>
+License:  MIT license
+
+CONTENTS                                                            *ide-contents*
+
+  1     Intro..............................................|ide-intro|
+  2     Usage..............................................|ide-usage|
+  3     Panels.............................................|ide-panels|
+  4     Components.........................................|ide-components|
+  5     Default Components.................................|ide-default-components|
+  6     Integration with other Plugins.....................|ide-plugin-integration|
+
+====================================================================================
+INTRODUCTION                                                           *ide-intro*
+
+`nvim-ide` sets out to be a complete IDE layer for Neovim. 
+
+`nvim-ide` requires Neovim v0.8.0 or greater.
+
+This project defines an 'IDE layer' by drawing many synonyms from `vscode`.
+
+Therefore, `nvim-ide` provides several key features:
+    1. A set of default component plugins providing a minimum IDE experience.
+    2. A component based plugin API for extending `nvim-ide`.
+    3. A panel API which works similar to other IDEs, allowing plugins to be
+       registered and displayed in a stack of windows.
+    5. A rich set of library APIs for building component plugins and displaying
+       plugin UIs.
+    5. Swappable panels, allowing users to swap in sets of plugins during
+       runtime.
+    6. Verbose logging capabilities of all components.
+
+`nvim-ide` views each Neovim tab as a "Workspace" with its own set of panels,
+components, and state. 
+
+A Workspace defines a particular UI. 
+
+┌────────────────────┬──────────────────────────────┬─────────────────────┐
+│                    │                              │                     │
+│                    │                              │                     │
+│                    │                              │                     │
+│                    │                              │                     │
+│                    │                              │                     │
+│                    │                              │                     │
+│                    │                              │                     │
+│                    │                              │                     │
+│                    │                              │                     │
+│   Left Panel       │                              │     Right Panel     │
+│                    │                              │                     │
+│                    │                              │                     │
+│                    │                              │                     │
+│                    │                              │                     │
+│                    │                              │                     │
+│                    │                              │                     │
+│                    ├──────────────────────────────┤                     │
+│                    │                              │                     │
+│                    │                              │                     │
+│                    │      Terminal/Utility        │                     │
+│                    │                              │                     │
+│                    │                              │                     │
+└────────────────────┴──────────────────────────────┴─────────────────────┘
+
+The left and right panels are user defined, while the Terminal/Utility panel
+is reserved for showing informational details of `nvim-ide` or the current 
+plugins.
+
+At any given time the Workspace has a dynamic set of components running as 
+plugins in the registered panels. 
+
+This means, `nvim-ide` is 'modal' in a sense, as you can change which components
+are currently active within a Workspace by changing the currently displayed
+panels.
+
+Almost all of `nvim-ide` features are made available via the 'Workspace' user
+command. This will be covered in more details later in the docs.
+
+====================================================================================
+Usage                                                                   *ide-usage*
+
+TLDR: Install via plugin manager, call setup function, issue the "Workspace" 
+command to see available commands and sub-commands.
+
+Getting started with `nvim-ide` is very simple, and there's a single setup function
+which can be used. 
+
+First, get the plugin with your favorite plugin manager of choice. 
+
+Next, add the setup function anywhere you configure your plugins:
+>
+    require('ide').setup({
+        -- The global icon set to use.
+        -- values: "nerd", "codicon", "default"
+        icon_set = "default",
+		-- Set the log level for nvim-ide's log. Log can be accessed with 
+		-- 'Workspace OpenLog'. Values are 'debug', 'warn', 'info', 'error'
+		log_level = "info",
+        -- Component specific configurations and default config overrides.
+        components = {
+            -- The global keymap is applied to all Components before construction.
+            -- It allows common keymaps such as "hide" to be overriden, without having
+            -- to make an override entry for all Components.
+            --
+            -- If a more specific keymap override is defined for a specific Component
+            -- this takes precedence.
+            global_keymaps = {
+                -- example, change all Component's hide keymap to "h"
+                -- hide = h
+            },
+            -- example, prefer "x" for hide only for Explorer component.
+            -- Explorer = {
+            --     keymaps = {
+            --         hide = "x",
+            --     }
+            -- }
+        },
+        -- default panel groups to display on left and right.
+        panels = {
+            left = "explorer",
+            right = "git"
+        },
+        -- panels defined by groups of components, user is free to redefine the defaults
+        -- and/or add additional.
+        panel_groups = {
+            explorer = { outline.Name, bufferlist.Name, explorer.Name, bookmarks.Name, callhierarchy.Name, terminalbrowser.Name },
+            terminal = { terminal.Name },
+            git = { changes.Name, commits.Name, timeline.Name, branches.Name }
+        },
+        -- workspaces config
+        workspaces = {
+            -- which panels to open by default, one of: 'left', 'right', 'both', 'none'
+            auto_open = 'left',
+        },
+        -- default panel sizes for the different positions
+        panel_sizes = {
+            left = 30,
+            right = 30,
+            bottom = 15
+        }
+    })
+<
+
+The above is the default configuration. It defines the icon set to use if you
+have a patched font, any component configuration overrides (mostly for modifying
+keymaps), the default panel groups to use for the left and right panels, and the
+definitions of which components make up a panel group.
+
+As a high level user, you can just assume that each component module will have
+a global "Name" variable to use, `nvim-ide` handles everything else involved in
+displaying a Component plugin. If you are interested in developing out-of-tree
+components, then check out the |ide-components| section.
+
+Once the setup function is called a new 'Workspace' is created for each tab and
+the default panels will be loaded and displayed. By default only the left panel
+is opened.
+
+You can begin exploring features of the plugin by simply issuing the 'Workspace'
+command. If you have `telescope`, `fzf-lua`, or any other plugin which registers
+as a `vim.ui` handler, you'll get a fuzzy finder of the available commands for
+the current 'Workspace'.
+
+A command may perform an action (like Workspace LeftPanelToggle) or may open a 
+subsequent sub-command menu (like Explorer). This allows you to navigate the
+available commands in a familiar 'context menu' way.
+
+====================================================================================
+Panels                                                                 *ide-panels*
+
+Panels make up the primary UI component of `nvim-ide`.
+
+Panels provide an abstraction over a stacked set of Neovim windows, each of which
+display a registered Component. We'll touch more on components in the next section,
+for now just understand they are the business logic behind plugins displayed in panels.
+
+The panels are designed to work similarly to `vscode`.
+
+Each Panel displays a PanelGroup which is a panel with a specific grouping of
+Component plugins. Its then possible to swap the current PanelGroup out for another.
+
+This becomes useful if you'd like to create a modal IDE experience. For instance,
+you may have a PanelGroup you use when exploring code, but a separate PanelGroup
+when you want to begin staging files and creating commits. You could name the 
+first PanelGroup 'coding' and the second 'git', then swap these group into the 
+left or right Panels when appropriate. 
+
+This should feel familiar to previous `vscode` users, who have probably switched
+between their 'Explorer' panels and 'CVS' panels before.
+
+Defining PanelGroup(s) will be covered in the `ide-config` portion.
+
+Panels can be toggled open with the `Workspace LeftPanelToggle` and 
+`Workspace RightPanelToggle` commands. 
+
+A Panel can swap PanelGroups with the `Workspace SwapPanel` command. You'll be
+asked which PanelGroup to swap into which Panel (left or right).
+
+====================================================================================
+Components                                                         *ide-components*
+
+If you are not interested in developing or understanding how `nvim-ide` Component
+plugins work, you can skip this section all together.
+
+`nvim-ide` defines a Component as a registered plugin which is capable of being
+displayed within a Panel and a PanelGroup.
+
+A Component implements a well defined API and also registers itself within a 
+`ComponentFactory` as defined in 'ide.panels.component_factory'.
+
+For example, here is the Bookmarks component's init.lua file:
+
+>
+    local component_factory = require('ide.panels.component_factory')
+    local component = require('ide.components.bookmarks.component')
+
+    local Init = {}
+
+    Init.Name = "Bookmarks"
+
+
+    local function register_component()
+        component_factory.register(Init.Name, component.new)
+
+        if vim.fn.isdirectory(vim.fn.fnamemodify(component.NotebooksPath, ":p")) == 0 then
+            vim.fn.mkdir(vim.fn.fnamemodify(component.NotebooksPath, ":p"))
+        end
+    end
+
+    -- call yourself, this will be triggered when another module wants to reference
+    -- ide.components.explorer.Name
+    register_component()
+
+    return Init
+<
+
+This is the boilerplate required to register a Component into `nvim-ide`.
+You'll see that a unique name is defined, this uniquely defines the component 
+and is accessible via 'ide.components.bookmarks.Name'.
+
+Its handy to place the Component's name within this file, and then import it 
+into your config when defining a panel group. This ensures the `register_component`
+method is ran, and `nvim-ide` can locate the constructor for the component.
+
+Each Component must have a unique name or else this registration will fail. 
+
+Any other initialization necessary for the Component can be done within the
+`register_component()` function, as shown here with the `vim.fn` functions.
+
+`nvim-ide` utilizes a closure-based OOP paradigm, where Component is the base
+class and implementations implement the necessary methods, but also inherit methods
+which can generically apply to all instances of a Component.
+
+A Component must also implement a well defined API which is outlined in 
+`ide/panels/components/component.lua`.
+
+These methods are:
+  `open()`
+  `post_win_create()`
+  `get_commands()`
+  `close()`
+
+See the source file for the complete documentations on these interface methods 
+along with other methods available across all derived components.
+
+====================================================================================
+Default Components                                         *ide-default-components*
+
+`nvim-ide` ships with several default components available for immediate use.
+
+All component buffers support the following keybinds (cannot re-map).
+
+"+" - maximize the component to full height.
+"-" - minimize the component to minimal height.
+"=" - set all components to equal width, or their default heights if provided
+by user config.
+
+We'll cover each one along with their configuration here. 
+
+
+====================================================================================
+Bookmarks                                               *ide-bookmarks-components*
+
+The Bookmarks component implements the ability to create per-workspace bookmarks
+which are organized in Notebooks. 
+
+Each workspace keeps an independent set of Notebooks which separate Bookmarks into
+particular subjects. 
+
+A Notebook must be created and opened before creating a Bookmark. 
+This can be done with the `Workspace Bookmarks CreateNotebook` command and the
+`Workspace Bookmarks OpenNotebook` command for existing notebooks.
+
+Once created the Notebook will be opened and the Bookmarks UI will appear in the
+Panel if not already displayed.
+
+You can now create a bookmark anywhere in a source code file with the 
+`Workspace Bookmarks CreateBookmark` command.
+
+Bookmarks are "sticky" which means they will move around as you edit the code.
+A Bookmark which has moved will enter a "dirty" state (indicated by an asterick). 
+If the buffer is saved the bookmark will be saved as well. If you discard 
+the changes by either closing the buffer or exiting Neovim, the Bookmark's 
+dirty state won't be written to disk and the original Bookmark location 
+will be restored on next usage.
+
+It's important to remember to save a buffer to write any dirty bookmarks to
+disk.
+
+You can view all Bookmarks commands by issuing the `Workspace` command and then
+navigating to the `Bookmarks` subcommand.
+
+Config:
+>
+{
+	default_height = nil,
+	disabled_keymaps = false,
+	keymaps = {
+		close = "X",
+		collapse = "zc",
+		collapse_all = "zM",
+		details = "d",
+		expand = "zo",
+		help = "?",
+		hide = "H",
+		jump = "<CR>",
+		jump_split = "s",
+		jump_tab = "t",
+		jump_vsplit = "v",
+		remove_bookmark = "D",
+	},
+}
+<
+
+====================================================================================
+Branches                                                  *ide-branches-components*
+
+The Branches component displays the branches of the current git repository.
+
+It allows the user to administer git branches for the current git repository as
+well.
+
+You can view all Branches commands by issuing the `Workspace` command and then
+navigating to the `Branches` subcommand.
+
+Be aware, you should use ssh for your remotes if you intend to push or pull
+changes to a branch via this component. HTTP auth is not supported.
+
+The Branches component requires an upstream to be in order to display
+ahead/behind/diverged status. 
+
+You can set an upstream with the 'set_upstream' keymap below. This is the
+equivalent of performing 'git branch {branch} --set-upstream-to:'
+
+Config:
+>
+{
+	default_height = nil,
+	disabled_keymaps = false,
+	hidden = false,
+	keymaps = {
+		expand = "zo",
+		collapse = "zc",
+		collapse_all = "zM",
+		jump = "<CR>",
+		create_branch = "c",
+		refresh = "r",
+		hide = "H",
+		close = "X",
+		details = "d",
+		pull = "p",
+		push = "P",
+		set_upstream = "s",
+		help = "?"
+	},
+}
+<
+
+====================================================================================
+BufferList                                              *ide-bufferlist-components*
+
+A list of currently open buffers. If multiple buffers have the same filename,
+parts of the full path to the files will be used to ensure they are unique in the list.
+For example, if you have opened `lua/myplugin/init.lua` and
+`lua/myplugin/submodule/init.lua`, they will appear in the list as `myplugin/init.lua`
+and `submodule/init.lua`, respectively.
+
+You can view all CallHierarchy commands by issuing the `Workspace` command and then
+navigating to the `BufferList` subcommand.
+
+Config:
+>
+{
+	default_height = nil,
+	-- float the current buffer to the top of list
+	current_buffer_top = false,
+	-- disable all keymaps
+	disabled_keymaps = false,
+	hidden = false,
+	keymaps = {
+		edit = "<CR>",
+		edit_split = "s",
+		edit_vsplit = "v",
+		delete = "d",
+		hide = "H",
+		close = "X",
+		details = "d",
+	},
+}
+<
+
+====================================================================================
+CallHierarchy                                        *ide-callhierarchy-components*
+
+A tree UI for examining the incoming and outgoing function calls for a given 
+symbol in a source code buffer.
+
+This depends on a properly attached LSP server for the given buffer.
+
+A particular symbol in the CallHierarchy tree may have multiple references, in
+which case the (default) "n" key can be used to cycle through references.
+
+You can view all CallHierarchy commands by issuing the `Workspace` command and then
+navigating to the `CallHierarchy` subcommand.
+
+Config:
+>
+{
+	default_height = nil,
+	disabled_keymaps = false,
+	hidden = false,
+	keymaps = {
+		expand = "zo",
+		collapse = "zc",
+		collapse_all = "zM",
+		jump = "<CR>",
+		jump_split = "s",
+		jump_vsplit = "v",
+		jump_tab = "t",
+		hide = "H",
+		close = "X",
+		next_reference = "n",
+		switch_directions = "s",
+		help = "?",
+	},
+}
+<
+
+====================================================================================
+Changes                                                   *ide-changes-components*
+
+The changes component will show the git status for the current repository. 
+
+It allows the user to stage, restore, commit, amend, etc... changed files.
+
+You can view all Changes commands by issuing the `Workspace` command and then
+navigating to the `Changes` subcommand.
+
+Config:
+>
+{
+	default_height = nil,
+	disabled_keymaps = false,
+	hidden = false,
+	keymaps = {
+		add = "s",
+		amend = "a",
+		close = "X",
+		collapse = "zc",
+		collapse_all = "zM",
+		commit = "c",
+		details= "d",
+		diff = "<CR>",
+		diff_tab = "t",
+		edit = "e",
+		expand = "zo",
+		help = "?",
+		hide = "H",
+		restore = "r",
+	},
+}
+<
+
+====================================================================================
+Commits                                                    *ide-commits-components*
+
+Shows the commit history for the given repository. 
+
+Allows the user to perform a read-only preview of the changed files within a commit
+along with checking out the commit and opening a modifiable diff of the changed 
+file.
+
+You'll want to use the checkout option when you want all your LSP tools to work
+correctly. When you perform a checkout diff, the actual file on the filesystem
+is opened at that commit and all your LSP tooling will work correctly.
+
+Use the `Branches` component to easily return to the original branch once a 
+checkout diff was performed.
+
+You can view all Commits commands by issuing the `Workspace` command and then
+navigating to the `Commits` subcommand.
+
+Config:
+
+>
+{
+	default_height = nil,
+	disabled_keymaps = false,
+	hidden = false,
+	keymaps = {
+		checkout = "c",
+		close = "X",
+		collapse = "zc",
+		collapse_all = "zM",
+		details = "d",
+		details_tab = "D",
+		diff = "<CR>",
+		diff_split = "s",
+		diff_tab = "t",
+		diff_vsplit = "v",
+		expand = "zo",
+		help = "?",
+		hide = "H",
+		refresh = "r",
+	},
+}
+<
+
+====================================================================================
+Explorer                                                  *ide-explorer-components*
+
+A full featured and real-time file explorer.
+
+It supports batch operations with the use of selections along with full recursive
+copies and moves.
+
+You can view all Explorer commands by issuing the `Workspace` command and then
+navigating to the `Explorer` subcommand.
+
+Config:
+>
+{
+	-- show file permissions as virtual text on the right hand side.
+	show_file_permissions = true,
+	-- open the file on create in an editor window.
+	edit_on_create = true,
+	-- default component height
+	default_height = nil,
+	-- disable all keymaps for the Explorer component.
+	disabled_keymaps = false,
+	keymaps = presets.default,
+	hidden = false,
+}
+<
+
+The following keymapping presets are available in the
+`require('ide.components.explorer.presets')` module:
+
+>
+
+    Presets.default = {
+		expand = "zo",
+		collapse = "zc",
+		collapse_all = "zM",
+		edit = "<CR>",
+		edit_split = "s",
+		edit_vsplit = "v",
+		edit_tab = "t",
+		hide = "H",
+		close = "X",
+		new_file = "n",
+		delete_file = "D",
+		new_dir = "d",
+		rename_file = "r",
+		move_file = "m",
+		copy_file = "p",
+		select_file = "<Space>",
+		deselect_file = "<Space><Space>",
+		change_dir = "cd",
+		up_dir = "..",
+		file_details = "i",
+		toggle_exec_perm = "*",
+		maximize = "+",
+		minimize = "-"
+	}
+
+	Presets.nvim_tree = {
+	  change_dir = "cd",
+	  close = "X",
+	  collapse = "zc",
+	  collapse_all = "W",
+	  copy_file = "p",
+	  delete_file = "d",
+	  deselect_file = "<Space><Space>",
+	  edit = "<CR>",
+	  edit_split = "<C-x>",
+	  edit_tab = "<C-t>",
+	  edit_vsplit = "<C-v>",
+	  expand = "zo",
+	  file_details = "i",
+	  hide = "<NOP>",
+	  maximize = "+",
+	  minimize = "-",
+	  move_file = "m",
+	  new_dir = "<NOP>",
+	  new_file = "a",
+	  rename_file = "r",
+	  select_file = "<Space>",
+	  toggle_exec_perm = "*",
+	  up_dir = ".."
+	}
+<
+
+====================================================================================
+Outline                                                    *ide-outline-components*
+
+A real-time document outline which tracks the current position in the file. 
+
+Supports updating the source code buffer's cursor when a symbol is scrolled over
+in the Outline UI window.
+
+This depends on a properly attached LSP server for the buffer.
+
+You can view all Outline commands by issuing the `Workspace` command and then
+navigating to the `Outline` subcommand.
+
+Config:
+>
+{
+	default_height = nil,
+	disabled_keymaps = false,
+	hidden = false,
+	keymaps = {
+		close = "X",
+		collapse = "zc",
+		collapse_all = "zM",
+		details = "d",
+		expand = "zo",
+		help = "?",
+		hide = "H",
+		jump = "<CR>",
+		jump_split = "s",
+		jump_tab = "t",
+		jump_vsplit = "v",
+	},
+}
+<
+
+====================================================================================
+TerminalBrowser                                    *ide-terminalbrowser-components*
+
+Displays a UI for managing terminal instances. 
+
+Supports renaming terminals to help organization of terminal instances.
+
+This component must be present in a Workspace in order for the Terminal panel 
+(middle bottom) to function correctly.
+
+You can view all TerminalBrowser commands by issuing the `Workspace` command and then
+navigating to the `TerminalBrowser` subcommand.
+
+Config:
+<
+>
+{
+	default_height = nil,
+	disabled_keymaps = false,
+	hidden = false,
+	keymaps = {
+		new = "n",
+		jump = "<CR>",
+		hide = "H",
+		delete = "D",
+		rename = "r",
+	},
+}
+<
+
+====================================================================================
+Timeline                                                  *ide-timeline-components*
+
+Displays the history of a particular source code file and supports displaying
+a read-only diff. 
+
+This is useful to understand how a file has changed overtime.
+
+You can view all Timeline commands by issuing the `Workspace` command and then
+navigating to the `Timeline` subcommand.
+
+Config:
+>
+{
+	default_height = nil,
+	disabled_keymaps = false,
+	hidden = false,
+	keymaps = {
+		close = "X",
+		collapse = "zc",
+		collapse_all = "zM",
+		details = "d",
+		expand = "zo",
+		help = "?",
+		hide = "H",
+		jump = "<CR>",
+		jump_split = "s",
+		jump_tab = "t",
+		jump_vsplit = "v",
+	},
+}
+<
+
+====================================================================================
+Integration with other plugins   							*ide-plugin-integration*
+
+
+                                                            *ide-bufferline-integration*
+bufferline.nvim (https://github.com/akinsho/bufferline.nvim), to offset the
+start of the first tab:
+>
+  require("bufferline").setup({
+	options = {
+		offsets = {
+			{
+				filetype = "filetree",
+				text = "",
+				highlight = "Explorer",
+				text_align = "left",
+			}
+		},
+	},
+  })
+<
+
+                                                            *ide-nvim-dap-ui-integration*
+nvim-dap-ui (https://github.com/rcarriga/nvim-dap-ui), to close `nvim-ide` panels on
+debugging start:
+
+>
+  require('dapui').setup()
+
+  local function close_nvim_ide_panels()
+	  if pcall(require, 'ide') then
+		  local ws = require('ide.workspaces.workspace_registry').get_workspace(vim.api.nvim_get_current_tabpage())
+		  if ws ~= nil then
+			  ws.close_panel(require('ide.panels.panel').PANEL_POS_BOTTOM)
+			  ws.close_panel(require('ide.panels.panel').PANEL_POS_LEFT)
+			  ws.close_panel(require('ide.panels.panel').PANEL_POS_RIGHT)
+		  end
+	  end
+  end
+
+  local dap, dapui = require("dap"), require("dapui")
+  dap.listeners.after.event_initialized["dapui_config"] = function()
+	dapui.open()
+	close_nvim_ide_panels()
+  end
+  dap.listeners.before.event_terminated["dapui_config"] = function()
+	dapui.close()
+  end
+  dap.listeners.before.event_exited["dapui_config"] = function()
+	dapui.close()
+  end
+<
+
+vim:tw=78:fo=tcq2mM:ts=4:ft=help:norl:noet:fdm=marker:fen
