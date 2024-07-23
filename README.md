@@ -1,9 +1,7 @@
-https://github.com/Mirsmog/dots/assets/108391860/0b79e5af-b459-428d-8b45-ccb304459e34
+![2024-07-23-072613_hyprshot](https://github.com/user-attachments/assets/3d817b2e-b2ff-49b1-bc5b-31942a958c44)
+![2024-07-23-072324_hyprshot](https://github.com/user-attachments/assets/65cbc9f6-5a21-4498-ac34-c5f6366dab5d)
+![2024-07-23-072556_hyprshot](https://github.com/user-attachments/assets/3119f2f4-3cec-4f5e-b755-473ffa7a5617)
 
-![2024-07-09-012416_hyprshot](https://github.com/Mirsmog/dots/assets/108391860/30b05021-aba1-4f3c-88f6-d19f83c068a4)
-![2024-07-09-012608_hyprshot](https://github.com/Mirsmog/dots/assets/108391860/7fbb31d7-9f09-4742-b2e0-148a16bdadff)
-![2024-07-09-011856_hyprshot](https://github.com/Mirsmog/dots/assets/108391860/aa4f7063-a3a5-4305-9c0e-11382a054a84)
-![2024-07-23-032130_hyprshot](https://github.com/user-attachments/assets/65ac22c5-4e34-41c5-89f7-467ea706bd31)
 
   
 # INFO
