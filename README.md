@@ -1,5 +1,5 @@
 ![2024-07-23-072613_hyprshot](https://github.com/user-attachments/assets/3d817b2e-b2ff-49b1-bc5b-31942a958c44)
-![2024-07-23-072324_hyprshot](https://github.com/user-attachments/assets/65cbc9f6-5a21-4498-ac34-c5f6366dab5d)
+![2024-07-23-073153_hyprshot](https://github.com/user-attachments/assets/31f90db2-a12c-45c1-ac92-07de18548ccb)
 ![2024-07-23-072556_hyprshot](https://github.com/user-attachments/assets/3119f2f4-3cec-4f5e-b755-473ffa7a5617)
 
 
