@@ -9,6 +9,6 @@ vim.g.css_variables_files = { "./src/assets/styles/vars.css" }
 vim.opt.termguicolors = true
 
 lvim.transparent_window = false
-lvim.colorscheme = 'nightfox'
+lvim.colorscheme = 'eva01-ghost'
 lvim.format_on_save = true
 lvim.builtin.bufferline.active = false

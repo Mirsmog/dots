@@ -23,6 +23,16 @@ function save_gaps() {
   echo "\$var_gaps_out=$gaps_out" >> "$GAPS_FILE"
   echo "\$new_width=$new_width" >> "$GAPS_FILE"
   echo "\$new_height=$new_height" >> "$GAPS_FILE"
+
+  update_mako_config
+}
+
+function update_mako_config() {
+  local new_margin="${gaps_out},${gaps_out},${gaps_out},${gaps_out}"
+  
+  sed -i "s/^margin=.*/margin=${new_margin}/" "$HOME/.config/mako/config"
+  
+  makoctl reload
 }
 
 # Function to increase gaps_in
