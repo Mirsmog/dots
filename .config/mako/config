@@ -1,14 +1,20 @@
 # Colors
-
-background-color=#1e1e2e
+#
+layer=overlay
+margin=18,18,18,18
+anchor=top-center
+background-color=#020221CC
 text-color=#cdd6f4
-border-color=#89b4fa
+border-color=#209fb5
+border-size=1
+border-radius=5
 progress-color=over #313244
-font=BlexMono Nerd Font 10
+max-icon-size=64
+font=JetBrainsMono Nerd Font 10
 default-timeout=5000
 ignore-timeout=1
 
 [urgency=high]
-border-color=#fab387
+border-color=#209fb5
 default-timeout=0
 

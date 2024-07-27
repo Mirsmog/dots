@@ -27,8 +27,11 @@ function save_gaps() {
   update_mako_config
 }
 
+
 function update_mako_config() {
-  local new_margin="${gaps_out},${gaps_out},${gaps_out},${gaps_out}"
+  local extra_margin=10 
+  local new_margin=$((gaps_out + extra_margin))
+  new_margin="${new_margin},${new_margin},${new_margin},${new_margin}"
   
   sed -i "s/^margin=.*/margin=${new_margin}/" "$HOME/.config/mako/config"
   

@@ -33,7 +33,7 @@
       "<span color='#f6c177'></span>",
       "<span color='#eb6f92'></span>"
     ],
-    "on-click": "killall htop || kitty --class global-float-big -e htop"
+    "on-click": "killall btop || kitty --class global-float-big -e btop"
   },
   "memory": {
     "interval": 1,
@@ -50,7 +50,7 @@
     ],
     "tooltip": true,
     "tooltip-format": "Memory - {used:0.1f}GB used",
-    "on-click": "killall htop || kitty --class global-float-big -e htop"
+    "on-click": "killall btop || kitty --class global-float-big -e btop"
   },
   "tray": {
     "spacing": 10,
