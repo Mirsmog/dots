@@ -4,12 +4,9 @@ lvim.builtin.telescope.defaults.mappings.n["q"] = telescopeActions.close
 
 lvim.builtin["terminal"].open_mapping = "<c-/>"
 
-
 lvim.keys.normal_mode["<C-n>"] = ":RunCode<CR>"
 lvim.keys.normal_mode["<C-a>"] = "gg<S-v>G"
--- lvim.keys.normal_mode["<S-l>"] = ":BufferLineCycleNext<CR>"
--- lvim.keys.normal_mode["<S-h>"] = ":BufferLineCyclePrev<CR>"
-vim.keymap.set("n", "<S-l>", vim.diagnostic.open_float, { noremap = true, silent = true, buffer = bufnr })
+lvim.keys.normal_mode["<S-l>"] = ":lua vim.diagnostic.open_float()<CR>"
 
 
 lvim.lsp.buffer_mappings.normal_mode["gr"] = {

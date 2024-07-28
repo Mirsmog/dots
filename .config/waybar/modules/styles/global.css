@@ -2,7 +2,7 @@
   all: initial;
   font-family: 'Cascadia Code', 'Font Awesome 6 Pro';
   font-weight: bold;
-  font-size: 11px;
+  font-size: 10px;
   min-height: 0;
   color: @text;
 }
@@ -11,6 +11,8 @@ window#waybar {
   transition-property: background-color;
   transition-duration: 0.5s;
   background-color: rgba(2, 2, 33, 0.8);
+  border-radius: 5px;
+  border: 1px solid #1E1E2E;
 }
 
 tooltip {

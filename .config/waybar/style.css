@@ -9,19 +9,13 @@
   margin-left: 12px;
 }
 
+.modules-right * {
+  margin-right: 12px;
+}
+
 .modules-right,
 .modules-left {
   margin-bottom: -2px;
-}
-
-.modules-left,
-.modules-center,
-.modules-right {
-  border-radius: 100%;
-}
-
-.modules-right * {
-  margin-right: 16px;
 }
 
 #custom-date,

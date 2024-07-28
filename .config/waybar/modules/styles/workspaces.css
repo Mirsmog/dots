@@ -27,8 +27,6 @@
   font-size: 13px;
 }
 
-#workspaces button.special.active {}
-
 #workspaces button.empty {
   color: @textDawn;
   color: #45475a;

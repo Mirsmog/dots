@@ -8,7 +8,6 @@ text-color=#cdd6f4
 border-color=#209fb5
 border-size=1
 border-radius=5
-progress-color=over #313244
 max-icon-size=64
 font=JetBrainsMono Nerd Font 10
 default-timeout=5000

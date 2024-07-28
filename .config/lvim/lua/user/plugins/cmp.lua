@@ -2,17 +2,17 @@ return {
   "hrsh7th/nvim-cmp",
   event = "InsertEnter",
   dependencies = {
-    "hrsh7th/cmp-buffer", -- source for text in buffer
-    "hrsh7th/cmp-path",   -- source for file system paths
+    "hrsh7th/cmp-buffer",
+    "hrsh7th/cmp-path",
     'lukas-reineke/cmp-under-comparator',
     {
       "L3MON4D3/LuaSnip",
-      version = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
+      version = "v2.*",
       build = "make install_jsregexp",
     },
-    "saadparwaiz1/cmp_luasnip",     -- for autocompletion
-    "rafamadriz/friendly-snippets", -- useful snippets
-    "onsails/lspkind.nvim",         -- vs-code like pictograms
+    "saadparwaiz1/cmp_luasnip",
+    "rafamadriz/friendly-snippets",
+    "onsails/lspkind.nvim",
     'roginfarrer/cmp-css-variables',
   },
 
@@ -27,7 +27,7 @@ return {
       completion = {
         completeopt = "menu,menuone,preview,noselect",
       },
-      snippet = { -- configure how nvim-cmp interacts with snippet engine
+      snippet = {
         expand = function(args)
           luasnip.lsp_expand(args.body)
         end,
@@ -49,12 +49,12 @@ return {
       },
 
       mapping = cmp.mapping.preset.insert({
-        ["<C-k>"] = cmp.mapping.select_prev_item(), -- previous suggestion
-        ["<C-j>"] = cmp.mapping.select_next_item(), -- next suggestion
+        ["<C-k>"] = cmp.mapping.select_prev_item(),
+        ["<C-j>"] = cmp.mapping.select_next_item(),
         ["<C-b>"] = cmp.mapping.scroll_docs(-4),
         ["<C-f>"] = cmp.mapping.scroll_docs(4),
-        ["<C-Space>"] = cmp.mapping.complete(), -- show completion suggestions
-        ["<C-e>"] = cmp.mapping.abort(),        -- close completion window
+        ["<C-Space>"] = cmp.mapping.complete(),
+        ["<C-e>"] = cmp.mapping.abort(),
         ["<CR>"] = cmp.mapping.confirm({ select = false }),
 
         ['<Tab>'] = cmp.mapping(function(fallback)
@@ -75,7 +75,7 @@ return {
 
       }),
       sources = cmp.config.sources({
-        -- { name = 'css-variables' },
+
         {
           name = "nvim_lsp",
           entry_filter = function(entry)
@@ -86,9 +86,9 @@ return {
             return require("cmp").lsp.CompletionItemKind.Snippet ~= entry:get_kind()
           end
         },
-        { name = "luasnip" }, -- snippets
-        { name = "buffer" },  -- text within current buffer
-        { name = "path" },    -- file system paths
+        { name = "luasnip" },
+        { name = "buffer" },
+        { name = "path" },
       }),
 
       formatting = {

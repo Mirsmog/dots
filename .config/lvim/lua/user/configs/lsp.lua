@@ -12,6 +12,10 @@ local global_lsp_opts = {
 
 }
 
+vim.diagnostic.config({
+  virtual_text = false
+})
+
 lsp_manager.setup("tsserver", global_lsp_opts)
 lsp_manager.setup("lua_ls", global_lsp_opts)
 lsp_manager.setup("emmet_ls")
