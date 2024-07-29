@@ -1,6 +1,10 @@
 local function load_plugins()
   local plugin_dir = vim.fn.stdpath('config') .. '/lua/user/plugins/'
 
+  if vim.fn.isdirectory(plugin_dir) == 0 then
+    plugin_dir = vim.env.LUNARVIM_CONFIG_DIR .. '/lua/user/plugins/'
+  end
+
   local function load_from_directory(directory)
     local files = vim.fn.readdir(directory)
 

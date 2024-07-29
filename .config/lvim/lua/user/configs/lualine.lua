@@ -21,4 +21,8 @@ lvim.builtin.lualine.sections.lualine_a = {
   }
 }
 
+vim.opt.laststatus = 0
+
 lvim.builtin.lualine.style = "default"
+
+lvim.builtin.lualine.active = false

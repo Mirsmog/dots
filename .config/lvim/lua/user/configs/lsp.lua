@@ -1,21 +1,19 @@
-local lsp_manager = require("lvim.lsp.manager")
-
+local lspconfig = require('lspconfig')
 
 local handlers = {
-  ['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded", stylize_markdown = false, }),
+  ['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded", stylize_markdown = false }),
   ['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help,
-    { border = "rounded", stylize_markdown = false, }),
+    { border = "rounded", stylize_markdown = false }),
 }
 
 local global_lsp_opts = {
   handlers = handlers
-
 }
 
 vim.diagnostic.config({
   virtual_text = false
 })
 
-lsp_manager.setup("tsserver", global_lsp_opts)
-lsp_manager.setup("lua_ls", global_lsp_opts)
-lsp_manager.setup("emmet_ls")
+lspconfig.tsserver.setup(global_lsp_opts)
+lspconfig.lua_ls.setup(global_lsp_opts)
+lspconfig.emmet_ls.setup({})

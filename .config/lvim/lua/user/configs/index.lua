@@ -1,6 +1,10 @@
 local function load_configs()
   local config_dir = vim.fn.stdpath('config') .. '/lua/user/configs/'
 
+  if vim.fn.isdirectory(config_dir) == 0 then
+    config_dir = vim.env.LUNARVIM_CONFIG_DIR .. '/lua/user/configs/'
+  end
+
   local function load_from_directory(directory)
     local files = vim.fn.readdir(directory)
 
