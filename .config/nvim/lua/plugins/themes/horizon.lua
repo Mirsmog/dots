@@ -1,3 +1,0 @@
-return {
-  "lunarvim/horizon.nvim"
-}
