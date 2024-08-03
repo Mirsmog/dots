@@ -16,8 +16,15 @@ return {
       },
     },
     window = {
-
       width = 30,
+    },
+    filesystem = {
+      filtered_items = {
+        hide_by_name = {},
+        never_show = {
+          "node_modules",
+        },
+      },
     },
   },
 }

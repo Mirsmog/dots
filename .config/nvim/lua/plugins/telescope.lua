@@ -36,6 +36,14 @@ return {
         theme = "dropdown",
         hidden = true,
       },
+      lsp_references = {
+        theme = "dropdown",
+        initial_mode = "normal",
+      },
+      lsp_definitions = {
+        theme = "dropdown",
+        initial_mode = "normal",
+      },
       buffers = {
         theme = "dropdown",
         initial_mode = "normal",

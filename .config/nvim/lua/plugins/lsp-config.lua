@@ -1,6 +1,6 @@
 return {
   "neovim/nvim-lspconfig",
-  opts = function()
+  opts = function(_, opts)
     local keys = require("lazyvim.plugins.lsp.keymaps").get()
     for _, keymap in ipairs(keys) do
       if keymap[1] == "<leader>ca" then
@@ -19,5 +19,7 @@ return {
         keymap[1] = "<leader>lA"
       end
     end
+
+    opts.diagnostics.virtual_text = false
   end,
 }
