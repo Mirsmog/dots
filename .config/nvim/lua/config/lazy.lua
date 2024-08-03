@@ -25,10 +25,6 @@ require("lazy").setup({
     {
       "LazyVim/LazyVim",
       import = "lazyvim.plugins",
-      opts = {
-        colorscheme = "onedark_dark",
-        -- colorscheme = "solarized-osaka",
-      },
     },
     -- import/override with your plugins
     { import = "plugins" },

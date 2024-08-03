@@ -17,7 +17,7 @@ local function write_file(file, content)
 end
 
 function M.random_background_image()
-  local images_dir = vim.fn.expand(vim.g.wall_dir)
+  local images_dir = vim.fn.expand("~/Pictures/Vswall/")
 
   local png_images = vim.fn.glob(images_dir .. "*.png", false, true)
   local jpg_images = vim.fn.glob(images_dir .. "*.jpg", false, true)
