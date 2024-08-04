@@ -1,6 +1,4 @@
-if vim.g.neovide then
-  require("utils.neovide")
-end
+vim.g.wall_dir = "~/Pictures/nwall/"
 
 vim.g.markdown_recommended_style = 0
 
@@ -19,3 +17,7 @@ vim.opt.termguicolors = true
 vim.diagnostic.config({
   virtual_text = false,
 })
+
+if vim.g.neovide then
+  require("utils.neovide")
+end
