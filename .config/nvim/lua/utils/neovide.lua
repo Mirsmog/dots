@@ -1,13 +1,13 @@
-local random_background = require("utils.random_background")
-local image = random_background.random_background_image()
-
-if image then
-  vim.g.neovide_background_image = image
-else
-  vim.g.neovide_background_image = vim.fn.expand(vim.g.wall_dir) .. "main.png"
-  vim.g.neovide_background_transparency = 0.8
-end
-
+-- local random_background = require("utils.random_background")
+-- local image = random_background.random_background_image()
+--
+-- if image then
+--   vim.g.neovide_background_image = image
+-- else
+--   vim.g.neovide_background_image = vim.fn.expand(vim.g.wall_dir) .. "main.png"
+--   vim.g.neovide_background_transparency = 0.8
+-- end
+--
 vim.g.neovide_cursor_trail_size = 0
 vim.g.neovide_cursor_animate_in_insert_mode = false
 vim.g.neovide_cursor_animate_command_line = false

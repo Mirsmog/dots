@@ -4,7 +4,7 @@ return {
   dependencies = {
     "hrsh7th/cmp-buffer",
     "hrsh7th/cmp-path",
-    'lukas-reineke/cmp-under-comparator',
+    "lukas-reineke/cmp-under-comparator",
     {
       "L3MON4D3/LuaSnip",
       version = "v2.*",
@@ -13,13 +13,13 @@ return {
     "saadparwaiz1/cmp_luasnip",
     "rafamadriz/friendly-snippets",
     "onsails/lspkind.nvim",
-    'roginfarrer/cmp-css-variables',
+    "roginfarrer/cmp-css-variables",
   },
 
   config = function()
     local cmp = require("cmp")
     local luasnip = require("luasnip")
-    local lspkind = require('lspkind')
+    local lspkind = require("lspkind")
 
     require("luasnip.loaders.from_vscode").lazy_load()
 
@@ -57,34 +57,32 @@ return {
         ["<C-e>"] = cmp.mapping.abort(),
         ["<CR>"] = cmp.mapping.confirm({ select = false }),
 
-        ['<Tab>'] = cmp.mapping(function(fallback)
+        ["<Tab>"] = cmp.mapping(function(fallback)
           if luasnip.expand_or_jumpable() then
             luasnip.expand_or_jump()
           else
             fallback()
           end
-        end, { 'i', 's' }),
-        ['<S-Tab>'] = cmp.mapping(function(fallback)
+        end, { "i", "s" }),
+        ["<S-Tab>"] = cmp.mapping(function(fallback)
           if luasnip.jumpable(-1) then
             luasnip.jump(-1)
           else
             fallback()
           end
-        end, { 'i', 's' }),
-
-
+        end, { "i", "s" }),
       }),
       sources = cmp.config.sources({
 
         {
           name = "nvim_lsp",
           entry_filter = function(entry)
-            local file = vim.bo.filetype;
+            local file = vim.bo.filetype
             if file == "css" or file == "typescriptreact" or file == "html" then
               return true
             end
             return require("cmp").lsp.CompletionItemKind.Snippet ~= entry:get_kind()
-          end
+          end,
         },
         { name = "luasnip" },
         { name = "buffer" },
@@ -98,8 +96,8 @@ return {
           symbol_map = {
             Color = "󰝤",
           },
-          before = require("tailwind-tools.cmp").lspkind_format
-        })
+          before = require("tailwind-tools.cmp").lspkind_format,
+        }),
       },
     })
   end,

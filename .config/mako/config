@@ -1,9 +1,9 @@
 # Colors
 #
-layer=overlay
+layer=top
 margin=18,18,18,18
 anchor=top-center
-background-color=#020221CC
+background-color=#020221B3
 text-color=#cdd6f4
 border-color=#209fb5
 border-size=1

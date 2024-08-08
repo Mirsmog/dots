@@ -7,20 +7,9 @@
   "spacing": 0,
   "layer": "top",
   "margin": "0px 8px 8px",
-  "modules-left": [
-    "cpu",
-    "memory",
-    "tray"
-  ],
-  "modules-center": [
-    "hyprland/workspaces"
-  ],
-  "modules-right": [
-    "pulseaudio",
-    "hyprland/language",
-    "network",
-    "clock"
-  ],
+  "modules-left": ["cpu", "memory", "tray"],
+  "modules-center": ["hyprland/workspaces"],
+  "modules-right": ["pulseaudio", "hyprland/language", "network", "clock"],
   "cpu": {
     "interval": 1,
     "format": "{icon} {usage}%",
@@ -98,12 +87,7 @@
     "format-muted": "<span color='#eb6f92'></span> Muted",
     "on-click": "pactl set-sink-mute 0 toggle",
     "format-icons": {
-      "default": [
-        "",
-        "",
-        "",
-        ""
-      ]
+      "default": ["", "", "", ""]
     },
     "scroll-step": 5,
     "tooltip": true,
