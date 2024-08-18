@@ -1,5 +1,5 @@
 vim.g.wall_dir = "~/Pictures/nwall/"
-
+vim.g.lazyvim_prettier_needs_config = true
 vim.g.markdown_recommended_style = 0
 
 vim.o.relativenumber = true
