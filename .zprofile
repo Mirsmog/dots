@@ -1,5 +1,5 @@
-export EDITOR=lvim
-export VISUAL=lvim
+export EDITOR=nvim
+export VISUAL=nvim
 export HYPRSHOT_DIR=$HOME/Pictures/Screenshots
 export WALLPAPERS_DIR=$HOME/Pictures/Wallpapers
 export XDG_CONFIG_HOME=$HOME/.config

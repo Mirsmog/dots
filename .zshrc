@@ -22,15 +22,22 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 
-alias vi="lvim"
+alias vi="nvim"
 alias pai="sudo pacman -Sy"
 alias pau="sudo pacman -Syu"
 alias par="sudo pacman -Rs"
 alias ff="fastfetch"
+alias wllr="cd ~/Public/wallter && ya start"
 alias ya="yarn"
 alias hyprshot="$HOME/.local/bin/hyprshot"
+alias neovide='~/.cargo/bin/neovide'
+
+alias cava='kitty @ set-spacing padding=0 margin=0 && kitty @ set-font-size 1 && cava && exit'
 alias cls="clear"
-alias uplvim="sh ~/dots/scripts/update-lvim.sh"
+alias glvim="sh ~/dots/scripts/update-lvim.sh"
+alias gvim="sh ~/dots/scripts/update-nvim.sh"
+alias livew="mpvpaper -o \"no-audio --loop-playlist\" DVI-D-1 ~/Videos/Wallpapers/main.mp4"
+alias kif="vi ~/.config/kitty/kitty.conf"
 
 alias l='exa -alF --icons --color=always --group-directories-first'
 alias la='exa -a --icons --color=always --group-directories-first'
@@ -42,3 +49,5 @@ bindkey -v
 
 source <(fzf --zsh)
 eval "$(zoxide init zsh --cmd cd)"
+
+export PATH=$PATH:/home/zwine/.spicetify
