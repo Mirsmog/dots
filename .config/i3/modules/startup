@@ -1,0 +1,9 @@
+exec --no-startup-id "setxkbmap -layout us,ru"
+exec --no-startup-id "setxkbmap -option 'grp:win_space_toggle'"
+
+exec --no-startup-id feh --bg-fill "$(cat ~/Pictures/Wallpapers/.current)"
+exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+exec --no-startup-id firefox
+exec --no-startup-id dex --autostart --environment i3
+
+

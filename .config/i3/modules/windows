@@ -1,0 +1,8 @@
+for_window [class="^.*"] border pixel 1
+
+assign [class="firefox"] $ws2
+assign [class="nvim-k"] $ws3
+assign [class="Virt-manager"] $ws9
+
+
+
