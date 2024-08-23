@@ -5,6 +5,7 @@ map("n", "<C-n>", "<cmd>RunCode<CR>")
 
 map("n", "<leader>l", "", { desc = "Lsp" })
 map("n", "<S-l>", "<cmd>lua vim.diagnostic.open_float()<CR>")
+map("n", "gz", "<cmd>:lua vim.lsp.buf.definition()<CR>", { desc = "Go Typescript Definition" })
 
 map("n", "dw", 'vb"_d')
 

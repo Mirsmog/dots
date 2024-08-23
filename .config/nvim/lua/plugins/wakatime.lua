@@ -1,1 +1,2 @@
-return { "wakatime/vim-wakatime" }
+return {}
+-- return { "wakatime/vim-wakatime" }
