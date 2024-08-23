@@ -17,8 +17,11 @@ return {
         keymap[1] = "<leader>lr"
       elseif keymap[1] == "<leader>cA" then
         keymap[1] = "<leader>lA"
+      elseif keymap[1] == "gd" then
       end
     end
+
+    keys[#keys + 1] = { "gd", "<cmd>:lua vim.lsp.buf.definition()<CR>", desc = "Goto definition" }
 
     opts.diagnostics.virtual_text = false
   end,
