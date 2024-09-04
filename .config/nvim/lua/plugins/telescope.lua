@@ -9,11 +9,6 @@ return {
       desc = "Switch Buffer",
     },
     { "<leader>o", "<cmd>Telescope oldfiles initial_mode=normal<cr>", desc = "Recent" },
-    {
-      "<leader><space>",
-      "<cmd>:Telescope file_browser path=%:p:h select_buffer=true initial_mode=normal<CR>",
-      desc = "Find File",
-    },
   },
 
   opts = {
@@ -32,19 +27,23 @@ return {
         },
       },
     },
+
     pickers = {
       find_files = {
         theme = "dropdown",
         hidden = true,
       },
+
       lsp_references = {
         theme = "dropdown",
         initial_mode = "normal",
       },
+
       lsp_definitions = {
         theme = "dropdown",
         initial_mode = "normal",
       },
+
       buffers = {
         theme = "dropdown",
         initial_mode = "normal",

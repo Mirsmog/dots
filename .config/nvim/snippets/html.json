@@ -5,9 +5,10 @@
       "<section class=\"$1\">",
       "   <div class=\"container\">",
       "    <div class=\"$1__inner\">",
-      "    $2""    </div>",
+      "      $2",
+      "    </div>",
       "  </div>",
-      "</section>",
+      "</section>"
     ],
     "description": "container with section"
   }

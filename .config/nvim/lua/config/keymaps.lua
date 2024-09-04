@@ -1,11 +1,12 @@
 -- Keymaps are automatically loaded on the VeryLazy event
 -- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
-local map = LazyVim.safe_keymap_set
-map("n", "<C-n>", "<cmd>RunCode<CR>")
+-- Add any additional keymaps here
+local map = vim.api.nvim_set_keymap
+local opts = { noremap = true, silent = true }
 
-map("n", "<leader>l", "", { desc = "Lsp" })
-map("n", "<S-l>", "<cmd>lua vim.diagnostic.open_float()<CR>")
-
-map("n", "dw", 'vb"_d')
-
-map("n", "<C-a>", "gg<S-v>G")
+map("n", "+", "<C-a>", opts)
+map("n", "-", "<C-x>", opts)
+map("n", "<C-n>", "<cmd>RunCode<CR>", opts)
+map("n", "<S-l>", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
+map("n", "dw", 'vb"_d', opts)
+map("n", "<C-a>", "gg<S-v>G", opts)
