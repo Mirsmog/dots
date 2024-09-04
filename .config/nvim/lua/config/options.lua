@@ -4,9 +4,9 @@ vim.g.markdown_recommended_style = 0
 
 vim.o.relativenumber = true
 vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
-
 vim.opt.mouse = ""
-vim.opt.iskeyword:append("-")
+vim.cmd([["set iskeyword-=-"]])
+
 vim.opt.fillchars = { eob = " " }
 vim.opt.termguicolors = true
 vim.opt.wrap = true
