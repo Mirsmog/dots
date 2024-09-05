@@ -4,20 +4,21 @@
     "body": [
       "import React from 'react';",
       "",
-      "interface I${1:$TM_FILENAME_BASE} {};",
+      "interface I${1:${TM_FILENAME_BASE/^([a-z]+)(?:-([a-z]+))*$/${1:/capitalize}${2:/capitalize}/g}} {};",
       "",
-      "const ${1:$TM_FILENAME_BASE}:React.FC<I${1:$TM_FILENAME_BASE}> = ({}) => {",
+      "const ${1:${TM_FILENAME_BASE/^([a-z]+)(?:-([a-z]+))*$/${1:/capitalize}${2:/capitalize}/g}}: React.FC<I${1}> = ({}) => {",
       "  return <div>$2</div>;",
       "};",
       "",
-      "export default ${1:$TM_FILENAME_BASE};"
+      "export default ${1};"
     ],
-    "description": "Geenrate React export component"
+    "description": "Generate React export component"
   },
+
   "Next page": {
     "prefix": "tnep",
     "body": [
-      "export default function ${1:$TM_FILENAME_BASE} = ({}) => {",
+      "export default function ${1:${TM_DIRECTORY/^.+\\/(.*)$/${1:/capitalize}/}}() {",
       "  return <div>$2</div>;",
       "};",
       ""

@@ -9,7 +9,7 @@ map("n", "<C-n>", "<cmd>RunCode<CR>", opts)
 map("n", "<S-l>", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
 
 vim.keymap.set("n", "<C-/>", function()
-  Util.float_term(nil, { border = "rounded" })
+  Util.float_term(nil, { border = "rounded", cwd = LazyVim.root() })
 end, { desc = "Term with border" })
 
 map("n", "dw", 'vb"_d', opts)
