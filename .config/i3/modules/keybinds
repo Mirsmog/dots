@@ -1,11 +1,4 @@
-bindsym Print exec maim "/home/$USER/Pictures/$(date).jpg"
-bindsym $mod+Print exec maim --window $(xdotool getactivewindow) "/home/$USER/Pictures/$(date).jpg"
-bindsym Shift+Print exec maim --select "/home/$USER/Pictures/$(date).jpg"
 
-## Clipboard Screenshots
-bindsym Ctrl+Print exec maim | xclip -selection clipboard -t image/png
-bindsym Ctrl+$mod+Print exec maim --window $(xdotool getactivewindow) | xclip -selection clipboard -t image/png
-bindsym Ctrl+Shift+Print exec maim --select | xclip -selection clipboard -t image/png
 
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
@@ -14,12 +7,18 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +5%
 bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 5%-
 
-bindsym $mod+Return exec kitty
-bindsym $mod+y exec kitty -o window_padding_width=0 -o window_margin_width=0 --title File\ Explorer -e yazi ~
+bindsym $mod+Return exec kitty $HOME
+bindsym $mod+y exec kitty -o window_padding_width=0 -o window_margin_width=0 --title File\ Explorer -e yazi $HOME
 bindsym $mod+w exec firefox
-bindsym $mod+c exec kitty --class "nvim-k" -e nvim
+bindsym $mod+Shift+w exec firefox --private-window
+bindsym $mod+c exec kitty --class "nvim-k" -e nvim $HOME
 bindsym $mod+i exec kitty -e nvim ~/.config/i3/config
 bindsym $mod+m exec virt-manager
+
+
+
+bindsym $mod+p exec kitty --class "colorpicker" -e xcolor -s clipboard
+bindsym $mod+Shift+p exec kitty --class "colorpicker" -e xcolor -s clipboard -f rgb
 
 bindsym $mod+q kill
 
@@ -36,7 +35,9 @@ bindsym $mod+Shift+k move up
 bindsym $mod+Shift+l move right
 
 bindsym $mod+semicolon workspace back_and_forth
-bindsym $mod+Tab workspace back_and_forth
+
+bindsym $mod+Tab workspace next
+bindsym $mod+Shift+Tab workspace prev
 
 bindsym $mod+Mod1+k workspace next
 bindsym $mod+Mod1+j workspace prev
