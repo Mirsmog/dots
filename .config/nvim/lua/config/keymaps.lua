@@ -7,6 +7,7 @@ map("n", "+", "<C-a>", opts)
 map("n", "-", "<C-x>", opts)
 map("n", "<C-n>", "<cmd>RunCode<CR>", opts)
 map("n", "<S-l>", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
+map("n", "<leader><leader>", "<cmd>:Telescope file_browser path=%:p:h select_buffer=true initial_mode=normal<CR>", opts)
 
 vim.keymap.set("n", "<C-/>", function()
   Util.float_term(nil, { border = "rounded", cwd = LazyVim.root() })

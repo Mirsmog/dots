@@ -1,4 +1,4 @@
-local theme = "tokyodark"
+local theme = "onedark_dark"
 
 return {
   require("plugins.themes.onedarkpro"),
