@@ -8,7 +8,7 @@ return {
     vim.g.moonflyItalics = true
     vim.g.moonflyCursorColor = true
     vim.g.moonflyNormalFloat = true
-    vim.g.moonflyTransparent = true
+    vim.g.moonflyTransparent = false
     vim.g.moonflyUnderlineMatchParen = true
   end,
 }

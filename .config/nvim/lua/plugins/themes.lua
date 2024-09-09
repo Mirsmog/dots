@@ -1,10 +1,12 @@
--- local theme = "onedark_dark"
-local theme = "moonfly"
+local theme = "kanagawa"
 
 return {
-  require("plugins.themes.onedarkpro"),
+  require("plugins.themes.kanagawa"),
+  require("plugins.themes.gruvbox"),
+  require("plugins.themes.everforest"),
   require("plugins.themes.moonfly"),
   require("plugins.themes.tokyodark"),
+  require("plugins.themes.onedarkpro"),
   {
     "LazyVim/LazyVim",
     opts = {
