@@ -2,7 +2,7 @@ return {
   "sainnhe/gruvbox-material",
   config = function()
     vim.g.gruvbox_material_foreground = "material"
-    vim.g.gruvbox_material_background = "hard"
+    vim.g.gruvbox_material_background = "medium"
     vim.g.gruvbox_material_enable_italic = 1
 
     vim.api.nvim_create_autocmd("ColorScheme", {

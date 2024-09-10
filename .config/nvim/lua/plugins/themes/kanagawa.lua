@@ -36,6 +36,7 @@ return {
           GitSignsChangeDelete = { bg = "NONE" },
 
           DiagnosticError = { bg = "NONE" },
+          StatusLine = { bg = "none" },
           DiagnosticSignError = { bg = "NONE" },
           DiagnosticSignHint = { bg = "NONE" },
           DiagnosticSignInfo = { bg = "NONE" },

@@ -5,6 +5,7 @@ return {
   require("plugins.themes.gruvbox"),
   require("plugins.themes.everforest"),
   require("plugins.themes.moonfly"),
+  require("plugins.themes.rose-pine"),
   require("plugins.themes.tokyodark"),
   require("plugins.themes.onedarkpro"),
   {
