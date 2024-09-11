@@ -1,4 +1,4 @@
-local theme = "kanagawa"
+local theme = "nordic"
 
 return {
   require("plugins.themes.kanagawa"),
@@ -6,8 +6,9 @@ return {
   require("plugins.themes.everforest"),
   require("plugins.themes.moonfly"),
   require("plugins.themes.rose-pine"),
-  require("plugins.themes.tokyodark"),
+  require("plugins.themes.nordic"),
   require("plugins.themes.onedarkpro"),
+  require("plugins.themes.tokyodark"),
   {
     "LazyVim/LazyVim",
     opts = {

@@ -13,8 +13,8 @@ return {
       on_highlights = function(hl, palette)
         hl.NormalFloat = { bg = palette.none }
         hl.FloatBorder = { bg = palette.none, fg = palette.grey1 }
-        hl.WinBar = { bg = palette.none }
-        hl.WinBarNC = { bg = palette.none }
+        -- hl.WinBar = { bg = palette.none }
+        -- hl.WinBarNC = { bg = palette.none }
         hl.TelescopeResultsDiffChange = { bg = palette.none }
         hl.TelescopeResultsDiffAdd = { bg = palette.none }
         hl.TelescopeResultsDiffDelete = { bg = palette.none }

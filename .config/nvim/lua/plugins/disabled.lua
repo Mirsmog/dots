@@ -12,6 +12,10 @@ return {
     enabled = false,
   },
   {
+    "nvim-tree/nvim-tree.lua",
+    enabled = false,
+  },
+  {
     "echasnovski/mini.ai",
     enabled = false,
   },
