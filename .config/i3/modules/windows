@@ -6,7 +6,7 @@ for_window [class="imv"] floating enable
 for_window [class="mpv"] resize set 1600 900
 
 
-assign [class="firefox"] $ws2
+assign [class="zen-alpha"] $ws2
 assign [class="nvim-k"] $ws3
 assign [class="Code"] $ws5
 assign [class="Virt-manager"] $ws9

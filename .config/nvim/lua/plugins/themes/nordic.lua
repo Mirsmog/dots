@@ -17,6 +17,7 @@ return {
         WinSeparator = { bg = "NONE" },
         WinBarNC = { bg = "NONE" },
         LspCodeLens = { bg = "NONE" },
+        IblIndent = { fg = "#2E3440" },
       },
       cursorline = {
         bold = false,

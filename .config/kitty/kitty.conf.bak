@@ -1,5 +1,6 @@
-# font_family       VictorMono Nerd Font
-font_family       JetBrainsMono Nerd Font 
+ font_family       VictorMono Nerd Font Mono 
+#font_family       JetBrainsMono Nerd Font 
+#font_family       MonaspiceXe Nerd Font Mono
 # font_family      Pixel Code 
 font_size 	 14.0
 
@@ -8,7 +9,7 @@ symbol_map U+f000-U+f2e0 FontAwesome6Pro
 
 
 
-text_composition_strategy legacy
+#text_composition_strategy legacy
 bold_font        auto
 italic_font      auto
 bold_italic_font auto
@@ -17,9 +18,9 @@ bold_italic_font auto
 enable_audio_bell no
 confirm_os_window_close 0
 wheel_scroll_multiplier 1
-window_padding_width 8
+window_padding_width 0
 
-background_opacity 0.7
+background_opacity 1
 
 cursor_shape block
 cursor_beam_thickness 1.5
@@ -34,10 +35,42 @@ map shift+alt+j scroll_line_down
 map shift+alt+\ scroll_home
 map shift+alt+/ scroll_end
 
+map shift+ctrl+k next_tab
+map shift+ctrl+j prev_tab
+
+map shift+ctrl+h next_window
+map shift+ctrl+l prev_window
+
 
 
 include current-theme.conf
 # background #0d0f31
 #background #0C0C0C
-background #1a1b26
-background #020221
+# background #1a1b26
+
+
+# BEGIN_KITTY_THEME
+# Everforest Dark Medium
+include current-theme.conf
+# END_KITTY_THEME
+# background #18191a
+
+remember_window_size            yes
+enabled_layouts                 splits, stack
+placement_strategy              top-left
+resize_draw_strategy            static
+
+tab_bar_style                   custom
+tab_separator                   ""
+tab_fade                        0 0 0 0
+tab_title_template              "{fmt.fg._415c6d}{fmt.bg.default}  {index}:{f'{title[:6]}…{title[-6:]}' if title.rindex(title[-1]) + 1 > 25 else title}{' []' if layout_name == 'stack' else ''} "
+active_tab_title_template       "{fmt.fg._83b6af}{fmt.bg.default}   {index}:{f'{title[:6]}…{title[-6:]}' if title.rindex(title[-1]) + 1 > 25 else title}{' []' if layout_name == 'stack' else ''} "
+tab_bar_edge                    bottom
+tab_bar_align                   right
+tab_bar_margin_width            0.0
+tab_bar_margin_height           0.0 0.0
+active_tab_font_style           bold-italic
+inactive_tab_font_style         normal
+tab_bar_min_tabs                2
+tab_activity_symbol             none
+bell_on_tab                     no

@@ -7,13 +7,13 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +5%
 bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 5%-
 
-bindsym $mod+Return exec kitty $HOME
-bindsym $mod+y exec kitty -o window_padding_width=0 -o window_margin_width=0 --title File\ Explorer -e yazi $HOME
-bindsym $mod+w exec firefox
-bindsym $mod+Shift+w exec firefox --private-window
-bindsym $mod+c exec kitty --class "nvim-k" -e nvim $HOME
-bindsym $mod+i exec kitty -e nvim ~/.config/i3/config
-bindsym $mod+m exec virt-manager
+bindsym $mod+Return exec --no-startup-id kitty
+bindsym $mod+y exec --no-startup-id kitty --title File\ Explorer -e yazi $HOME
+bindsym $mod+w exec --no-startup-id zen-browser
+bindsym $mod+Shift+w exec --no-startup-id zen-browser --private-window
+bindsym $mod+c exec --no-startup-id kitty --class "nvim-k" -e nvim $HOME
+bindsym $mod+i exec --no-startup-id kitty -e nvim ~/.config/i3/config
+bindsym $mod+m exec --no-startup-id virt-manager
 
 
 

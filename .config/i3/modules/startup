@@ -1,7 +1,6 @@
 exec --no-startup-id feh --bg-fill "$(cat ~/Pictures/Wallpapers/.current)"
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-exec --no-startup-id firefox
-exec --no-startup-id flameshot
+exec --no-startup-id zen-browser
 exec --no-startup-id dex --autostart --environment i3
 
 

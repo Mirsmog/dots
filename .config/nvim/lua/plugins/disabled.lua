@@ -3,6 +3,10 @@ return {
     "nvim-lualine/lualine.nvim",
     enabled = false,
   },
+  -- {
+  --   "hrsh7th/nvim-cmp",
+  --   enabled = false,
+  -- },
   {
     "akinsho/bufferline.nvim",
     enabled = false,
