@@ -4,7 +4,7 @@ return {
   priority = 1000,
   config = function()
     require("nordic").setup({
-      bold_keywords = true,
+      bold_keywords = false,
       italic_comments = true,
       transparent_bg = false,
       bright_border = false,
