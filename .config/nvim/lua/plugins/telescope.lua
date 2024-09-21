@@ -9,6 +9,7 @@ return {
       desc = "Switch Buffer",
     },
     { "<leader>o", "<cmd>Telescope oldfiles initial_mode=normal<cr>", desc = "Recent" },
+    { "<leader>ff", LazyVim.pick("files", { show_untracked = true }), desc = "Find Files (Root Dir)" },
   },
 
   opts = {
@@ -18,6 +19,8 @@ return {
 
       file_ignore_patterns = {
         "node_modules",
+        "dist",
+        "prisma/migrations",
         "%.next",
       },
 
@@ -31,6 +34,22 @@ return {
     pickers = {
       find_files = {
         theme = "dropdown",
+        find_command = {
+          "rg",
+          "-uu",
+          "--files",
+          "--hidden",
+          "-g",
+          "!.git/",
+          "-g",
+          "!node_modules",
+          "-g",
+          "!dist",
+          "-g",
+          "!tmp/",
+          "-g",
+          "!build/",
+        },
         hidden = true,
       },
 
