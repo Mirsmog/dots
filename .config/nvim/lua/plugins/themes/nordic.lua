@@ -6,19 +6,24 @@ return {
     require("nordic").setup({
       bold_keywords = false,
       italic_comments = true,
-      transparent_bg = false,
+      transparent = {
+        bg = false,
+        float = false,
+      },
       bright_border = false,
       reduced_blue = true,
       swap_backgrounds = false,
-      override = {
-        NormalFloat = { bg = "NONE" },
-        FloatBorder = { bg = "NONE", fg = "#8FBCBB" },
-        WinBar = { bg = "NONE" },
-        WinSeparator = { bg = "NONE" },
-        WinBarNC = { bg = "NONE" },
-        LspCodeLens = { bg = "NONE" },
-        IblIndent = { fg = "#2E3440" },
-      },
+      on_highlight = function(highlights, palette)
+        highlights.NormalFloat = {
+          bg = "NONE",
+        }
+        highlights.FloatBorder = { bg = "NONE", fg = palette.cyan.base }
+        highlights.WinBar = { bg = "NONE" }
+        highlights.WinSeparator = { bg = "NONE" }
+        highlights.WinBarNC = { bg = "NONE" }
+        highlights.LspCodeLens = { bg = "NONE" }
+        highlights.IblIndent = { fg = palette.gray1 }
+      end,
       cursorline = {
         bold = false,
         bold_number = true,
