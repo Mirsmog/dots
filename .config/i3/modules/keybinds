@@ -92,6 +92,7 @@ mode "resize" {
 }
 
 mode "move" {
+        bindsym h workspace number $ws1; mode "default"
         bindsym w workspace number $ws2; mode "default"
         bindsym c workspace number $ws3; mode "default"
         bindsym m workspace number $ws9; mode "default"

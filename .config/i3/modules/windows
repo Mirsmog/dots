@@ -1,9 +1,10 @@
 for_window [class="^.*"] border pixel 1
 
-for_window [class="mpv"] floating enable
-for_window [class="imv"] floating enable
 #for_window [class="imv"] resize set 1280 720
-for_window [class="mpv"] resize set 1600 900
+for_window [class="imv"] floating enable
+
+for_window [class="mpv"] fullscreen 
+#for_window [class="mpv"] resize set 1600 900
 
 
 assign [class="zen-alpha"] $ws2
