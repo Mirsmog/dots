@@ -1,5 +1,6 @@
 return {
-  "nvim-telescope/telescope-file-browser.nvim",
+  "mirsmog/telescope-file-browser.nvim",
+  --"nvim-telescope/telescope-file-browser.nvim",
   dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
   config = function()
     local fb_actions = require("telescope").extensions.file_browser.actions

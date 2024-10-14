@@ -1,4 +1,4 @@
-local theme = "nordic"
+local theme = "catppuccin-latte"
 
 return {
   require("plugins.themes.nordic"),
